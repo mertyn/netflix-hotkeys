@@ -1,0 +1,21 @@
+{
+
+  "manifest_version": 2,
+  "name": "Netflix Hotkeys",
+  "version": "1.0",
+
+  "description": "Adds keyboard shortcuts to netflix similar to YouTube.",
+
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "js": ["hotkeys.js"],
+      "matches": ["*://*.netflix.com/watch/*"],
+      "run_at": "document_end"
+    }
+  ]
+
+}
