@@ -12,7 +12,7 @@
 
   "content_scripts": [
     {
-      "js": ["hotkeys.js"],
+      "js": ["inject.js"],
       "matches": ["*://*.netflix.com/watch/*"],
       "run_at": "document_end"
     }
