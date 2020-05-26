@@ -14,11 +14,25 @@ function inject(func) {
 }
 
 function init() {
+    // Function definitions
+    // ==========================================================================================
+
     // Wait for element to exist
     function waitForElement(selector, callback) {
         var poller = setInterval( function() {
-            var elements = document.querySelector(selector);
+            var elements = document.querySelectorAll(selector);
             if (elements.length < 1) return;
+            else {
+                clearInterval(poller);
+                callback();
+            }
+        });
+    }
+
+    function waitForNotElement(selector, callback) {
+        var poller = setInterval( function() {
+            var elements = document.querySelectorAll(selector);
+            if (elements.length > 0) return;
             else {
                 clearInterval(poller);
                 callback();
@@ -34,9 +48,26 @@ function init() {
         return videoPlayer.getVideoPlayerBySessionId(sessionId);
     }
 
-    document.onkeyup = function(e) {
-        console.log(e.key);
+    // Setup
+    // ==========================================================================================
+    function setup() {
+         
     }
+
+
+    // TODO: make this cleaner
+    // Wait for player being loaded -> wait for .AkiraPlayer
+    waitForElement(".AkiraPlayer", function(){
+        console.log("player loaded...");
+        // Wait for player ready -> wait for spinner deletion
+        waitForNotElement(".nf-loading-spinner", function() {
+            console.log("player ready");
+            setup();
+
+            // Make player global for debug purposes
+            window.nf_player = getNetflixPlayer();
+        });
+    });
 }
 
 inject(init);
