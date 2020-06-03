@@ -71,6 +71,12 @@ function init() {
 
         // TODO: clean this mess up
         document.onkeyup = function(e) {
+            // Detect if player has changed and update
+            if (!player.isReady()) {
+                player = getNetflixPlayer();
+                window.nf_player = getNetflixPlayer();
+            }
+
             var key = e.key.toLowerCase();
 
             if (key == "n" && e.shiftKey) {
@@ -105,6 +111,7 @@ function init() {
 
             // Make player global for debug purposes
             window.nf_player = getNetflixPlayer();
+            window.getNetflixPlayer = getNetflixPlayer;
         });
     });
 }
