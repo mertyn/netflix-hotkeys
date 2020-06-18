@@ -67,6 +67,32 @@ function init() {
             nextButton.click();
         }
 
+        function openSubtitles() {
+            var controls = document.querySelector(".PlayerControls--control-element.text-control.video-title");
+            var subtitleButton = document.querySelector(".button-nfplayerSubtitles");
+
+            controls.click();
+            subtitleButton.click();
+        }
+
+        function getCurrentSubtitles() {
+            // Maybe only execute if subtitle menu is open
+            var subs = document.querySelectorAll(".track-list-subtitles>ul>.track");
+
+            for (var i = 0; i < subs.length; i++) {
+                if ( subs[i].classList.value.search("selected") != -1) return i;
+            }
+        }
+
+        function nextSubtitle() {
+            openSubtitles();
+
+            var current = getCurrentSubtitles();
+            var subs = document.querySelectorAll(".track-list-subtitles>ul>.track");
+            
+            subs[(current + 1) % subs.length].click();
+        }
+
         // Add commands to hotkeys
         document.onkeypress = function(e) {
             // Detect if player has changed and update
@@ -96,6 +122,8 @@ function init() {
 
                     case "shift+s": skipIntro(); break;
                     case "shift+n": nextEpisode(); break;
+
+                    case "c": nextSubtitle(); break;
                 }
             }
             
