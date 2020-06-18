@@ -16,7 +16,7 @@
 
   "content_scripts": [
     {
-      "js": ["init.js", "inject.js"],
+      "js": ["js/init.js", "js/inject.js"],
       "matches": ["*://*.netflix.com/watch/*"],
       "run_at": "document_end"
     }
