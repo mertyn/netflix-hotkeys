@@ -14,6 +14,7 @@ function init() {
         });
     }
 
+    // Wait for element to not exist anymore
     function waitForNotElement(selector, callback) {
         var poller = setInterval( function() {
             var elements = document.querySelectorAll(selector);
@@ -90,27 +91,13 @@ function init() {
                     case "k": playPause(); break;
                     case "l": skip(5000); break;
 
+                    // case ",": if (player.isPaused) skip(-41); break;
+                    // case ".": if (player.isPaused) skip(41); break;
+
                     case "shift+s": skipIntro(); break;
                     case "shift+n": nextEpisode(); break;
                 }
             }
-
-            // if (key == "n" && e.shiftKey) {
-            //     var next = document.querySelector(".button-nfplayerNextEpisode");
-            //     next.click();
-            // }
-
-            // else if (e.keyCode >= 48 && e.keyCode <= 57) {
-            //     setChapter(e.keyCode - 48);
-            // }
-
-            // else {
-            //     switch(key) {
-                    // case "j": skip(-5000); break;
-                    // case "k": playPause(); break;
-                    // case "l": skip(5000); break;
-            //     }
-            // }
             
         }
     }
