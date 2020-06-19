@@ -134,18 +134,22 @@ function init() {
             
         }
     }
+    
+    // Setup when player ready
+    function onPlayerReady() {
+        console.log("player ready.");
+        setup();
+
+        // Make player global for debug purposes
+        window.nf_player = getNetflixPlayer();
+    }
+
+    // Wait for player ready -> wait for spinner deletion
+    function onPlayerLoaded() {
+        console.log("player loaded...");
+        waitForNotElement(".nf-loading-spinner", onPlayerReady);
+    }
 
     // Wait for player being loaded -> wait for .AkiraPlayer
-    waitForElement(".AkiraPlayer", function(){
-        console.log("player loaded...");
-        // Wait for player ready -> wait for spinner deletion
-        waitForNotElement(".nf-loading-spinner", function() {
-            console.log("player ready");
-            setup();
-
-            // Make player global for debug purposes
-            window.nf_player = getNetflixPlayer();
-            window.getNetflixPlayer = getNetflixPlayer;
-        });
-    });
+    waitForElement(".AkiraPlayer", onPlayerLoaded);
 }
