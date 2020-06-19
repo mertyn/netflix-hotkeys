@@ -51,15 +51,9 @@ function init() {
             player.seek(current  + millis);
         }
 
-        // TODO: find better name
         function setChapter(number) {
             var duration = player.getDuration();
-            player.seek( (duration / 9) * number );
-        }
-
-        function skipIntro() {
-            var skipButton = document.querySelector(".skip-credits>a>span");
-            skipButton.click();
+            player.seek( (duration / 10) * number );
         }
 
         function nextEpisode() {
@@ -67,6 +61,7 @@ function init() {
             nextButton.click();
         }
 
+        // TODO: Make this whole mess better
         function openSubtitles() {
             var controls = document.querySelector(".PlayerControls--control-element.text-control.video-title");
             var subtitleButton = document.querySelector(".button-nfplayerSubtitles");
@@ -91,6 +86,17 @@ function init() {
             var subs = document.querySelectorAll(".track-list-subtitles>ul>.track");
             
             subs[(current + 1) % subs.length].click();
+
+            var subtitleButton = document.querySelector(".button-nfplayerSubtitles");
+            var controls = document.querySelector(".controls-full-hit-zone");
+            setTimeout(function() {controls.click();}, 500);
+            subtitleButton.click();
+        }
+
+        function switchSubtitles() {
+            // Open the subtitles menu if not open already,
+            // cylce through subtitles
+            // Close after timeout or enter press
         }
 
         // Add commands to hotkeys
@@ -120,10 +126,9 @@ function init() {
                     // case ",": if (player.isPaused) skip(-41); break;
                     // case ".": if (player.isPaused) skip(41); break;
 
-                    case "shift+s": skipIntro(); break;
                     case "shift+n": nextEpisode(); break;
 
-                    case "c": nextSubtitle(); break;
+                    case "c": switchSubtitles(); break;
                 }
             }
             
