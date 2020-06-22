@@ -108,17 +108,35 @@ function init() {
             
             // Go to next position
             currentTrackNum = (currentTrackNum + 1) % trackList.length;
+            var nextTrack = trackList[currentTrackNum];
+
             player.setTextTrack(trackList[currentTrackNum]);
+            console.log("Subtitles set to " + nextTrack.displayName);
         }
 
         function toggleSubtitles() {
-            // Open the subtitles menu if not open already,
-            // switch between last selected and off
-            // Close menu directly
+            
         }
 
         function switchAudio() {
-            // Same as switchSubtitles, but for the audio tracks
+            var currentTrack = player.getAudioTrack();
+            var trackList = player.getAudioTrackList();
+            var currentTrackNum;
+
+            // Find position of current track
+            for (var i = 0; i < trackList.length; i++) {
+                if (currentTrack == trackList[i]) {
+                    currentTrackNum = i;
+                    break;
+                }
+            }
+            
+            // Go to next position
+            currentTrackNum = (currentTrackNum + 1) % trackList.length;
+            var nextTrack = trackList[currentTrackNum];
+
+            player.setAudioTrack(trackList[currentTrackNum]);
+            console.log("Audio set to " + nextTrack.displayName);
         }
 
         // Add commands to hotkeys
@@ -151,6 +169,7 @@ function init() {
                     case "shift+n": nextEpisode(); break;
 
                     case "c": switchSubtitles(); break;
+                    case "v": switchAudio(); break;
                 }
             }
             
