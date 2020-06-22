@@ -94,9 +94,31 @@ function init() {
         }
 
         function switchSubtitles() {
+            var currentTrack = player.getTextTrack();
+            var trackList = player.getTextTrackList();
+            var currentTrackNum;
+
+            // Find position of current track
+            for (var i = 0; i < trackList.length; i++) {
+                if (currentTrack == trackList[i]) {
+                    currentTrackNum = i;
+                    break;
+                }
+            }
+            
+            // Go to next position
+            currentTrackNum = (currentTrackNum + 1) % trackList.length;
+            player.setTextTrack(trackList[currentTrackNum]);
+        }
+
+        function toggleSubtitles() {
             // Open the subtitles menu if not open already,
-            // cylce through subtitles
-            // Close after timeout or enter press
+            // switch between last selected and off
+            // Close menu directly
+        }
+
+        function switchAudio() {
+            // Same as switchSubtitles, but for the audio tracks
         }
 
         // Add commands to hotkeys

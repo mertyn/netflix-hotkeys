@@ -6,8 +6,8 @@ function inject(func) {
     var scriptElement = document.createElement("script");
 
     var script = func.toString()                                // function to string
-    // script = script.replace(/(\/\/.+(\n|\r))|\/\/\n/g, "");     // remove comments
-    // script = script.replace(/\n|\t|\r/g, " ");                  // minify script
+    script = script.replace(/(\/\/.+(\n|\r))|\/\/\n/g, "");     // remove comments
+    script = script.replace(/\n|\t|\r/g, " ");                  // minify script
 
     scriptElement.innerHTML = `(${script})()`;
     scriptElement.classList.add("netflix-hotkeys");
