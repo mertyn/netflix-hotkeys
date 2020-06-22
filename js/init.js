@@ -78,6 +78,12 @@ function init() {
             currentTrackNum = (currentTrackNum + 1) % trackList.length;
             var nextTrack = trackList[currentTrackNum];
 
+            // Skip off
+            if (nextTrack.bcp47 === null) {
+                currentTrackNum = (currentTrackNum + 1) % trackList.length;
+                nextTrack = trackList[currentTrackNum];
+            }
+
             player.setTextTrack(trackList[currentTrackNum]);
             player.setTimedTextVisibility(true);
             console.log("Subtitles set to " + nextTrack.displayName);
