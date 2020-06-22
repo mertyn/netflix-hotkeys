@@ -61,38 +61,6 @@ function init() {
             nextButton.click();
         }
 
-        // TODO: Make this whole mess better
-        function openSubtitles() {
-            var controls = document.querySelector(".PlayerControls--control-element.text-control.video-title");
-            var subtitleButton = document.querySelector(".button-nfplayerSubtitles");
-
-            controls.click();
-            subtitleButton.click();
-        }
-
-        function getCurrentSubtitles() {
-            // Maybe only execute if subtitle menu is open
-            var subs = document.querySelectorAll(".track-list-subtitles>ul>.track");
-
-            for (var i = 0; i < subs.length; i++) {
-                if ( subs[i].classList.value.search("selected") != -1) return i;
-            }
-        }
-
-        function nextSubtitle() {
-            openSubtitles();
-
-            var current = getCurrentSubtitles();
-            var subs = document.querySelectorAll(".track-list-subtitles>ul>.track");
-            
-            subs[(current + 1) % subs.length].click();
-
-            var subtitleButton = document.querySelector(".button-nfplayerSubtitles");
-            var controls = document.querySelector(".controls-full-hit-zone");
-            setTimeout(function() {controls.click();}, 500);
-            subtitleButton.click();
-        }
-
         function switchSubtitles() {
             var currentTrack = player.getTextTrack();
             var trackList = player.getTextTrackList();
