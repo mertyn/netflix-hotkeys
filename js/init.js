@@ -58,7 +58,7 @@ function init() {
 
         function nextEpisode() {
             var nextButton = document.querySelector(".button-nfplayerNextEpisode");
-            nextButton.click();
+            if (nextButton) nextButton.click();
         }
 
         function switchSubtitles() {
