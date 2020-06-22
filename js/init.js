@@ -111,11 +111,13 @@ function init() {
             var nextTrack = trackList[currentTrackNum];
 
             player.setTextTrack(trackList[currentTrackNum]);
+            player.setTimedTextVisibility(true);
             console.log("Subtitles set to " + nextTrack.displayName);
         }
 
         function toggleSubtitles() {
-            
+            var visibility = player.getTimedTextVisibility();
+            player.setTimedTextVisibility(!visibility);
         }
 
         function switchAudio() {
@@ -168,7 +170,8 @@ function init() {
 
                     case "shift+n": nextEpisode(); break;
 
-                    case "c": switchSubtitles(); break;
+                    case "shift+c": switchSubtitles(); break;
+                    case "c": toggleSubtitles(); break;
                     case "v": switchAudio(); break;
                 }
             }
