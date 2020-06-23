@@ -8,7 +8,7 @@ function inject(func) {
     var script = func.toString()                                // function to string
     script = script.replace(/(\/\/.+(\n|\r))|\/\/\n/g, "");     // remove comments
     script = script.replace(/\n|\t|\r/g, " ");                  // minify script
-    script = script.replace(/ +/g, " ");
+    script = script.replace(/ +/g, " ");                        // Remove unneeded spaces
 
     scriptElement.innerHTML = `(${script})()`;
     scriptElement.classList.add("netflix-hotkeys");
