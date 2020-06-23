@@ -222,6 +222,8 @@ function init() {
 
         // Make player global for debug purposes
         window.nf_player = getNetflixPlayer();
+        // Pause immediately
+        // window.nf_player.pause();
     }
 
     // Wait for player ready -> wait for spinner deletion
