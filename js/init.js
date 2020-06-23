@@ -58,7 +58,7 @@ function init() {
 
         function nextEpisode() {
             var nextButton = document.querySelector(".button-nfplayerNextEpisode");
-            nextButton.click();
+            if (nextButton) nextButton.click();
         }
 
         function switchSubtitles() {
@@ -84,14 +84,47 @@ function init() {
                 nextTrack = trackList[currentTrackNum];
             }
 
-            player.setTextTrack(trackList[currentTrackNum]);
-            player.setTimedTextVisibility(true);
+            player.setTextTrack(nextTrack);
             console.log("Subtitles set to " + nextTrack.displayName);
         }
 
+        var lastSubtitles;
+
         function toggleSubtitles() {
-            var visibility = player.getTimedTextVisibility();
-            player.setTimedTextVisibility(!visibility);
+            var currentTrack = player.getTextTrack();
+            var trackList = player.getTextTrackList();
+
+            if (currentTrack.bcp47 !== null) {
+                lastSubtitles = currentTrack;
+                var offTrack;
+
+                for (var i = 0; i < trackList.length; i++) {
+                    if (trackList[i].bcp47 === null) {
+                        offTrack = trackList[i];
+                        break;
+                    }
+                }
+
+                player.setTextTrack(offTrack);
+            }
+
+            else {
+                if (lastSubtitles === undefined) {
+                    var onTrack;
+
+                    for (var i = 0; i < trackList.length; i++) {
+                        if (trackList[i].bcp47 !== null) {
+                            onTrack = trackList[i];     
+                            break;
+                        }
+                    }
+
+                    player.setTextTrack(onTrack);
+                }
+                else {
+                    player.setTextTrack(lastSubtitles);
+                }
+            }
         }
 
         function switchAudio() {
