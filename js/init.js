@@ -174,6 +174,11 @@ function init() {
             player.setTimedTextSize(size);
         }
 
+        function uiTest() {
+            var ui = document.getElementById("ui-test");
+            ui.classList.toggle("visible");
+        }
+
         // Add commands to hotkeys
         document.onkeypress = function(e) {
             // Detect if player has changed and update
@@ -210,6 +215,8 @@ function init() {
 
                     case "shift+*": increaseSubtitles(); break;
                     case "shift+_": decreaseSubtitles(); break;
+
+                    case "h": uiTest(); break;
                 }
             }
         }
@@ -223,7 +230,7 @@ function init() {
         // Make player global for debug purposes
         window.nf_player = getNetflixPlayer();
         // Pause immediately
-        // window.nf_player.pause();
+        window.nf_player.pause();
     }
 
     // Wait for player ready -> wait for spinner deletion

@@ -1,6 +1,28 @@
 .netflix-hotkeys {
-    position: absolute;
-    z-index: 100;
     width: 100%;
     height: 100%;
+    left: 0;
+    top: 0;
+
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+}
+
+div.nfhk-view {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    visibility: hidden;
+    position: absolute;
+}
+
+div.nfhk-view.visible {
+    visibility: visible;
+}
+
+div.nfhk-view.visible>* {
+    pointer-events: all;
 }
