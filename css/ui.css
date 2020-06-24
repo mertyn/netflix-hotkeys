@@ -32,6 +32,11 @@ div.nfhk-view.visible>* {
     pointer-events: all;
 }
 
+div.nfhk-view.visible>*:fullscreen {
+    visibility: hidden;
+    z-index: 100;
+}
+
 div.nfhk-view>div.box {
     /* width: 200px;
     height: 100px; */

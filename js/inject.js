@@ -21,7 +21,9 @@ function injectHTML(url) {
         
         div.classList.add("netflix-hotkeys");
         div.innerHTML = html;
-        document.body.appendChild(div);
+        // document.body.prepend(div);
+        var wrapper = document.querySelector("div.sizing-wrapper");
+        wrapper.prepend(div);
     }
 
     fetch(url).then(function(response) {
