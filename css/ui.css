@@ -11,14 +11,15 @@
     pointer-events: none;
 
     font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* font-size: 0.8em; */
     color: white;
 }
 
 div.nfhk-popup {
     left: 50%;
     top: 50%;
-    /* transform: translate(-50%, -50%) scale(2); */
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(2);
+    /* transform: translate(-50%, -50%); */
 
     visibility: hidden;
     position: absolute;
@@ -35,7 +36,30 @@ div.nfhk-popup.visible {
 
 div.nfhk-popup>h2.nfhk-popup-header {
     margin: 0;
-    padding: .75em 2.6em;
+    padding: .75em 2em;
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+div.nfhk-popup span.nfhk-popup-close {
+    position: absolute;
+
+    width: 0.8em;
+    top: 0;
+    right: 0;
+    margin: .75em 1em;
+
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+div.nfhk-popup span.nfhk-popup-close>svg {
+    width: 100%;
+    opacity: 0.75;
+}
+
+div.nfhk-popup span.nfhk-popup-close:hover>svg {
+    opacity: 1;
 }
 
 div.nfhk-popup div.nfhk-divider {
@@ -44,22 +68,36 @@ div.nfhk-popup div.nfhk-divider {
 }
 
 div.nfhk-popup div.nfhk-list {
-    /* width: 50%; */
+    display: flex;
 }
 
-div.nfhk-popup h3.nfhk-list-header {
+div.nfhk-popup div.nfhk-list h3.nfhk-list-header {
     margin: 0;
     padding: .75em 2.6em;
+    font-size: 0.94444444em;
 }
 
 div.nfhk-popup div.nfhk-list ul {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
-
 
 div.nfhk-popup div.nfhk-list ul li {
     margin: 0;
     padding: .75em 2.6em;
+    color: #b3b3b3;
+}
+
+div.nfhk-popup div.nfhk-list ul li.selected {
+    color: #fff;
+    background: rgba(255,255,255,.1);
+}
+
+div.nfhk-popup span.nfhk-key {
+    border-radius: 0.25em;
+    padding: 0.1em 0.4em;
+
+    border: 1px solid #b3b3b3;
+    font-family: monospace;
 }
