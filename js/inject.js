@@ -53,7 +53,7 @@ function injectJS(urls) {
     };
 }
 
-function injectHTML(url) {
+function injectHTML(url, selector) {
     // load and inject an html structure
 
     function onload(html) {
@@ -61,9 +61,9 @@ function injectHTML(url) {
         
         div.classList.add("netflix-hotkeys");
         div.innerHTML = html;
-        // TODO: refactor this
-        var wrapper = document.querySelector("div.sizing-wrapper");
-        wrapper.prepend(div);
+        
+        var target = document.querySelector(selector);
+        target.appendChild(div);
     }
 
     fetch(url).then(function(response) {
@@ -71,7 +71,7 @@ function injectHTML(url) {
     }).then(onload);
 }
 
-injectHTML(chrome.extension.getURL("html/ui.html"));
+injectHTML(chrome.extension.getURL("html/ui.html"), "div.sizing-wrapper");
 injectScript(init);
 
 // Testing area
