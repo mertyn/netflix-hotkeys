@@ -14,11 +14,11 @@
     "activeTab"
   ],
 
-  "web_accessible_resources": ["html/ui.html", "js/init.js", "js/hotkeys.js", "js/test.js", "js/test2.js"],
+  "web_accessible_resources": ["html/ui.html", "js/init.js", "js/hotkeys.js"],
 
   "content_scripts": [
     {
-      "js": ["js/init.js", "js/inject.js"],
+      "js": ["js/inject.js"],
       "css": ["css/ui.css"],
       "matches": ["*://*.netflix.com/watch/*"],
       "run_at": "document_end"

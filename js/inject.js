@@ -1,21 +1,7 @@
 console.log("content script started...");
 
-function injectScript(func) {
-    // inject function and execute it
-    var script = func.toString()                                // function to string
-    script = script.replace(/(\/\/.+(\n|\r))|\/\/\n/g, "");     // remove comments
-    script = script.replace(/\n|\t|\r/g, " ");                  // minify script
-    script = script.replace(/ +/g, " ");                        // Remove unneeded spaces
-    
-    var scriptElement = document.createElement("script");
-    scriptElement.innerHTML = `(${script})()`;
-    scriptElement.classList.add("netflix-hotkeys");
-    document.body.appendChild(scriptElement);
-}
-
+// Load js file(s) and inject to page
 function injectJS(urls) {
-    // load js file(s) and inject to page
-    
     if (Array.isArray(urls)) {
         function onload(texts) {
             // make complete script
@@ -53,8 +39,8 @@ function injectJS(urls) {
     };
 }
 
+// Load and inject an html structure
 function injectHTML(url, selector) {
-    // load and inject an html structure
 
     function onload(html) {
         var div = document.createElement("div");
@@ -72,7 +58,4 @@ function injectHTML(url, selector) {
 }
 
 injectHTML(chrome.extension.getURL("html/ui.html"), "div.sizing-wrapper");
-injectScript(init);
-
-// Testing area
-injectJS([chrome.extension.getURL("js/test.js"), chrome.extension.getURL("js/test2.js")]);
+injectJS([chrome.extension.getURL("js/hotkeys.js"), chrome.extension.getURL("js/init.js")]);
