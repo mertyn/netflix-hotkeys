@@ -78,7 +78,7 @@ div.nfhk-popup div.nfhk-list h3.nfhk-list-header {
 }
 
 div.nfhk-popup div.nfhk-list ul {
-    margin: 0;
+    margin: 0 0 1em 0;
     padding: 0;
     list-style: none;
 }
@@ -96,6 +96,7 @@ div.nfhk-popup div.nfhk-list ul li.selected {
 
 div.nfhk-popup span.nfhk-key {
     border-radius: 0.25em;
+    margin-right: 0.25em;
     padding: 0.1em 0.4em;
 
     border: 1px solid #b3b3b3;

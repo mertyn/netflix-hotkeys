@@ -135,10 +135,6 @@ function setupHotkeys() {
         player.setTimedTextSize(size);
     }
 
-    function uiTest() {
-        ui.toggle("ui-test");
-    }
-
     // Add commands to hotkeys
     document.onkeypress = function(e) {
         // Detect if player has changed and update
@@ -176,7 +172,7 @@ function setupHotkeys() {
                 case "shift+*": increaseSubtitles(); break;
                 case "shift+_": decreaseSubtitles(); break;
 
-                case "h": uiTest(); break;
+                case "h": ui.toggle("hotkeys-help"); break;
             }
         }
     }
