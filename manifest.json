@@ -14,7 +14,7 @@
     "activeTab"
   ],
 
-  "web_accessible_resources": ["html/ui.html"],
+  "web_accessible_resources": ["html/ui.html", "js/test.js", "js/test2.js"],
 
   "content_scripts": [
     {
