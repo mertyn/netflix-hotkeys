@@ -17,13 +17,11 @@ function setupHotkeys() {
         var duration = player.getDuration();
         player.seek( (duration / 10) * number );
 
-        if (number == 0) {
-            var progressBar = document.querySelector("div.current-progress");
-            var scrubber = document.querySelector("div.scrubber-head");
+        var progressBar = document.querySelector("div.current-progress");
+        var scrubber = document.querySelector("div.scrubber-head");
 
-            progressBar.style.width = "0%";
-            scrubber.style.left = "0%";
-        }
+        progressBar.style.width = `${number}0%`;
+        scrubber.style.left = `${number}0%`;
     }
 
     function nextEpisode() {
@@ -140,6 +138,11 @@ function setupHotkeys() {
         var ui = document.getElementById("ui-test");
         ui.classList.toggle("visible");
     }
+
+    // Document config
+
+    // Disable right click on UI
+    document.querySelector("div.netflix-hotkeys").oncontextmenu = function(e) { e.preventDefault() };
 
     // Add commands to hotkeys
     document.onkeypress = function(e) {
