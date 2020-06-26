@@ -1,4 +1,5 @@
 function setupHotkeys() {
+    ui.init();
     var player = getNetflixPlayer();
 
     function playPause() {
@@ -135,14 +136,8 @@ function setupHotkeys() {
     }
 
     function uiTest() {
-        var ui = document.getElementById("ui-test");
-        ui.classList.toggle("visible");
+        ui.toggle("ui-test");
     }
-
-    // Document config
-
-    // Disable right click on UI
-    document.querySelector("div.netflix-hotkeys").oncontextmenu = function(e) { e.preventDefault() };
 
     // Add commands to hotkeys
     document.onkeypress = function(e) {

@@ -14,7 +14,7 @@
     "activeTab"
   ],
 
-  "web_accessible_resources": ["html/ui.html", "js/init.js", "js/hotkeys.js"],
+  "web_accessible_resources": ["html/ui.html", "js/init.js", "js/hotkeys.js", "js/ui.js"],
 
   "content_scripts": [
     {

@@ -57,5 +57,9 @@ function injectHTML(url, selector) {
     }).then(onload);
 }
 
-injectHTML(chrome.extension.getURL("html/ui.html"), "div.sizing-wrapper");
-injectJS([chrome.extension.getURL("js/hotkeys.js"), chrome.extension.getURL("js/init.js")]);
+function inject() {
+    injectHTML(chrome.extension.getURL("html/ui.html"), "div.sizing-wrapper");
+    injectJS([chrome.extension.getURL("js/ui.js"), chrome.extension.getURL("js/hotkeys.js"), chrome.extension.getURL("js/init.js")]);
+}
+
+inject();
