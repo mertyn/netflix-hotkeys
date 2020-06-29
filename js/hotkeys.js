@@ -177,3 +177,7 @@ function setupHotkeys() {
         }
     }
 }
+
+function removeHotkeys() {
+    document.onkeypress = null;
+}
