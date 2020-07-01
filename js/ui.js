@@ -1,5 +1,11 @@
 const ui = {
     init: function() {
+        // Copy ui elements
+        var uiElement = document.querySelector("div.netflix-hotkeys");
+        var copy = uiElement.cloneNode(true);
+        var wrapper = document.querySelector("div.sizing-wrapper");
+        wrapper.prepend(copy);
+            
         // Disable right click on UI
         document.querySelector("div.netflix-hotkeys").oncontextmenu = function(e) { e.preventDefault() };
 

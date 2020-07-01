@@ -50,3 +50,10 @@ function onPlayerLoaded() {
 
 // Wait for player being loaded -> wait for .AkiraPlayer
 waitForElement(".AkiraPlayer", onPlayerLoaded);
+
+document.addEventListener("click", function(e) {
+    if (e.target.matches("[data-uia='nfplayer-exit']")) {
+        removeHotkeys();
+        waitForElement(".AkiraPlayer", onPlayerLoaded);
+    }
+});
