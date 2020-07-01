@@ -1,5 +1,5 @@
 function setupHotkeys() {
-    ui.init();
+    // ui.init();
     var player = getNetflixPlayer();
 
     function playPause() {
