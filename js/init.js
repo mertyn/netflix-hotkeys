@@ -67,9 +67,20 @@ function onPlayerLoaded() {
 // Wait for player being loaded -> wait for .AkiraPlayer
 waitForElement(".AkiraPlayer", onPlayerLoaded);
 
-document.addEventListener("click", function(e) {
-    if (e.target.matches("[data-uia='nfplayer-exit']")) {
-        removeHotkeys();
-        waitForElement(".AkiraPlayer", onPlayerLoaded);
-    }
+function resetPlayer() {
+    console.log("player reset.");
+    removeHotkeys();
+    waitForElement(".AkiraPlayer", onPlayerLoaded);
+}
+
+setOnURLChange(function(url) {
+    if (url.indexOf("/watch/") == -1) resetPlayer();
 });
+
+// document.addEventListener("click", function(e) {
+//     if (e.target.matches("[data-uia='nfplayer-exit']")) {
+//         resetPlayer();
+//     }
+// });
+
+var test = "hello";
