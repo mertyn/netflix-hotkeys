@@ -22,6 +22,22 @@ function waitForNotElement(selector, callback) {
     });
 }
 
+function setOnURLChange(callback) {
+    var currentURL = location.href;
+    var poller = setInterval(function() {
+        if (location.href != currentURL) {
+            currentURL = location.href;
+            callback(location.href);
+        }
+    });
+
+    return poller;
+}
+
+function clearOnURLChange(id) {
+    clearInterval(id);
+}
+
 // Get videoplayer to interact with
 function getNetflixPlayer() {
     var videoPlayer = window.netflix.appContext.state.playerApp.getAPI().videoPlayer;
