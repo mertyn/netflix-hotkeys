@@ -1,7 +1,6 @@
 function setupHotkeys() {
-    ui.init();
-
     var player = getNetflixPlayer();
+    ui.init(player);
 
     function playPause() {
         if (player.isPlaying()) player.pause();
@@ -173,6 +172,8 @@ function setupHotkeys() {
                 case "shift+*": increaseSubtitles(); break;
                 case "shift+_": decreaseSubtitles(); break;
 
+                case "t": ui.toggle("audio"); break;
+                case "g": ui.toggle("subtitles"); break;
                 case "h": ui.toggle("hotkeys-help"); break;
             }
         }

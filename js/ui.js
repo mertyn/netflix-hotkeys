@@ -1,5 +1,5 @@
 const ui = {
-    init: function() {
+    init: function(player) {
         // Copy ui elements
         var uiElement = document.querySelector("div.netflix-hotkeys");
         var copy = uiElement.cloneNode(true);
@@ -13,9 +13,31 @@ const ui = {
         var popups = document.querySelectorAll("div.nfhk-popup");
         popups.forEach(function(element) {
             var closeButton = element.querySelector("span.nfhk-popup-close");
-            closeButton.onclick = function(e) {
-                element.classList.remove("visible");
+            if (closeButton) {  
+                closeButton.onclick = function(e) {
+                    element.classList.remove("visible");
+                }
             }
+        });
+
+        // Init audio UI
+        var audioList = document.querySelector("div.nfhk-popup#audio div>ul");
+        var audioTracks = player.getTextTrackList();
+        
+        audioTracks.forEach(function(item) {
+            var li = document.createElement("li");
+            li.innerText = item.displayName;
+            audioList.appendChild(li);
+        });
+
+        // Init subtitles UI
+        var textList = document.querySelector("div.nfhk-popup#subtitles div>ul");
+        var textTracks = player.getAudioTrackList();
+        
+        textTracks.forEach(function(channel) {
+            var li = document.createElement("li");
+            li.innerText = channel.displayName;
+            textList.appendChild(li);
         });
     },
 
@@ -46,5 +68,13 @@ const ui = {
         elements.forEach(function(element) {
             element.classList.remove("visible")
         });
+    },
+
+    updateAudio: function() {
+
+    },
+
+    updateSubtitles: function() {
+        
     }
 };
