@@ -22,7 +22,7 @@ const ui = {
 
         // Init audio UI
         var audioList = document.querySelector("div.nfhk-popup#audio div>ul");
-        var audioTracks = player.getTextTrackList();
+        var audioTracks = player.getAudioTrackList();
         
         audioTracks.forEach(function(item) {
             var li = document.createElement("li");
@@ -30,15 +30,19 @@ const ui = {
             audioList.appendChild(li);
         });
 
+        ui.updateAudio(player);
+
         // Init subtitles UI
         var textList = document.querySelector("div.nfhk-popup#subtitles div>ul");
-        var textTracks = player.getAudioTrackList();
+        var textTracks = player.getTextTrackList();
         
         textTracks.forEach(function(channel) {
             var li = document.createElement("li");
             li.innerText = channel.displayName;
             textList.appendChild(li);
         });
+
+        ui.updateSubtitles(player);
     },
 
     show: function(id) {
@@ -52,6 +56,7 @@ const ui = {
     },
 
     toggle: function(id) {
+        this.hideAllExcept(id);
         var element = document.querySelector(`div.nfhk-popup#${id}`);
         element.classList.toggle("visible");
     },
@@ -70,11 +75,36 @@ const ui = {
         });
     },
 
-    updateAudio: function() {
-
+    hideAllExcept: function(id) {
+        var elements = document.querySelectorAll(`div.nfhk-popup:not(#${id})`);
+        elements.forEach(function(element) {
+            element.classList.remove("visible")
+        }); 
     },
 
-    updateSubtitles: function() {
-        
+    updateAudio: function(player) {
+        var audioTracks = document.querySelectorAll("div.nfhk-popup#audio div>ul>li");
+        var audioTrack = player.getAudioTrack();
+
+        audioTracks.forEach(function(item) {
+            item.classList.remove("selected");
+
+            if (item.innerHTML == audioTrack.displayName) {
+                item.classList.add("selected");
+            }
+        });
+    },
+
+    updateSubtitles: function(player) {
+        var textTracks = document.querySelectorAll("div.nfhk-popup#subtitles div>ul>li");
+        var textTrack = player.getTextTrack();
+
+        textTracks.forEach(function(item) {
+            item.classList.remove("selected");
+
+            if (item.innerHTML == textTrack.displayName) {
+                item.classList.add("selected");
+            }
+        });
     }
 };

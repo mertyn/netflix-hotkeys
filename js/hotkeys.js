@@ -48,6 +48,7 @@ function setupHotkeys() {
         var nextTrack = trackList[currentTrackNum];
 
         player.setAudioTrack(trackList[currentTrackNum]);
+        ui.updateAudio(player);
         console.log("Audio set to " + nextTrack.displayName);
     }
 
@@ -75,6 +76,7 @@ function setupHotkeys() {
         }
 
         player.setTextTrack(nextTrack);
+        ui.updateSubtitles(player);
         console.log("Subtitles set to " + nextTrack.displayName);
     }
 
@@ -115,6 +117,8 @@ function setupHotkeys() {
                 player.setTextTrack(lastSubtitles);
             }
         }
+
+        ui.updateSubtitles(player);
     }
 
     function increaseSubtitles() {
