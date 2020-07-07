@@ -30,7 +30,10 @@ function setupHotkeys() {
         if (nextButton) nextButton.click();
     }
 
+    var audioMenuTimer;
+
     function switchAudio() {
+        ui.show("audio");
         var currentTrack = player.getAudioTrack();
         var trackList = player.getAudioTrackList();
         var currentTrackNum;
@@ -47,12 +50,20 @@ function setupHotkeys() {
         currentTrackNum = (currentTrackNum + 1) % trackList.length;
         var nextTrack = trackList[currentTrackNum];
 
-        player.setAudioTrack(trackList[currentTrackNum]);
+        player.setAudioTrack(nextTrack);
         ui.updateAudio(player);
         console.log("Audio set to " + nextTrack.displayName);
+        
+        clearTimeout(audioMenuTimer);
+        audioMenuTimer = setTimeout(function() {
+            ui.hide("audio");
+        }, 900);
     }
 
+    var subtitlesMenuTimer;
+
     function switchSubtitles() {
+        ui.show("subtitles");
         var currentTrack = player.getTextTrack();
         var trackList = player.getTextTrackList();
         var currentTrackNum;
@@ -78,11 +89,17 @@ function setupHotkeys() {
         player.setTextTrack(nextTrack);
         ui.updateSubtitles(player);
         console.log("Subtitles set to " + nextTrack.displayName);
+
+        clearTimeout(subtitlesMenuTimer);
+        subtitlesMenuTimer = setTimeout(function() {
+            ui.hide("subtitles");
+        }, 900);
     }
 
     var lastSubtitles;
 
     function toggleSubtitles() {
+        ui.show("subtitles");
         var currentTrack = player.getTextTrack();
         var trackList = player.getTextTrackList();
 
@@ -119,6 +136,12 @@ function setupHotkeys() {
         }
 
         ui.updateSubtitles(player);
+        console.log("Toggled subtitles to: " + player.getTextTrack().displayName);
+
+        clearTimeout(subtitlesMenuTimer);
+        subtitlesMenuTimer = setTimeout(function() {
+            ui.hide("subtitles");
+        }, 1000);
     }
 
     function increaseSubtitles() {
@@ -176,8 +199,6 @@ function setupHotkeys() {
                 case "shift+*": increaseSubtitles(); break;
                 case "shift+_": decreaseSubtitles(); break;
 
-                case "t": ui.toggle("audio"); break;
-                case "g": ui.toggle("subtitles"); break;
                 case "h": ui.toggle("hotkeys-help"); break;
             }
         }
@@ -186,4 +207,5 @@ function setupHotkeys() {
 
 function removeHotkeys() {
     document.onkeypress = null;
+    ui.remove();
 }

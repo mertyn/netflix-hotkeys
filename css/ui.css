@@ -90,6 +90,7 @@ div.nfhk-popup div.nfhk-list ul {
 div.nfhk-popup div.nfhk-list ul li {
     margin: 0;
     padding: .75em 2.6em;
+    /* width: 100%; */
     color: #b3b3b3;
 }
 

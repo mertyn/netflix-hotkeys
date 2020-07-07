@@ -46,6 +46,7 @@ const ui = {
     },
 
     show: function(id) {
+        this.hideAllExcept(id);
         var element = document.querySelector(`div.nfhk-popup#${id}`);
         element.classList.add("visible");
     },
@@ -106,5 +107,10 @@ const ui = {
                 item.classList.add("selected");
             }
         });
+    },
+
+    remove: function() {
+        var element = document.querySelector("div.sizing-wrapper .netflix-hotkeys");
+        if (element) element.remove();
     }
 };
