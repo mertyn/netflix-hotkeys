@@ -1,5 +1,6 @@
 function setupHotkeys() {
     ui.init();
+
     var player = getNetflixPlayer();
 
     function playPause() {
@@ -176,4 +177,8 @@ function setupHotkeys() {
             }
         }
     }
+}
+
+function removeHotkeys() {
+    document.onkeypress = null;
 }

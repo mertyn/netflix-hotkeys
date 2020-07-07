@@ -22,6 +22,22 @@ function waitForNotElement(selector, callback) {
     });
 }
 
+function setOnURLChange(callback) {
+    var currentURL = location.href;
+    var poller = setInterval(function() {
+        if (location.href != currentURL) {
+            currentURL = location.href;
+            callback(location.href);
+        }
+    });
+
+    return poller;
+}
+
+function clearOnURLChange(id) {
+    clearInterval(id);
+}
+
 // Get videoplayer to interact with
 function getNetflixPlayer() {
     var videoPlayer = window.netflix.appContext.state.playerApp.getAPI().videoPlayer;
@@ -50,3 +66,21 @@ function onPlayerLoaded() {
 
 // Wait for player being loaded -> wait for .AkiraPlayer
 waitForElement(".AkiraPlayer", onPlayerLoaded);
+
+function resetPlayer() {
+    console.log("player reset.");
+    removeHotkeys();
+    waitForElement(".AkiraPlayer", onPlayerLoaded);
+}
+
+setOnURLChange(function(url) {
+    if (url.indexOf("/watch/") == -1) resetPlayer();
+});
+
+// document.addEventListener("click", function(e) {
+//     if (e.target.matches("[data-uia='nfplayer-exit']")) {
+//         resetPlayer();
+//     }
+// });
+
+var test = "hello";
