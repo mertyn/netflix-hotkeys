@@ -10,19 +10,19 @@
     "48": "icons/icon-48.png"
   },
 
-  "permissions": [
-    "activeTab"
-  ],
-
   "web_accessible_resources": ["html/ui.html", "js/init.js", "js/hotkeys.js", "js/ui.js"],
 
   "content_scripts": [
     {
-      "js": ["js/jquery-3.5.1.min.js", "js/inject.js"],
+      "js": ["js/inject.js"],
       "css": ["css/ui.css"],
       "matches": ["*://*.netflix.com/*"],
       "run_at": "document_end"
     }
-  ]
+  ],
+
+  "background": {
+    "scripts": ["js/background.js"]
+  }
 
 }

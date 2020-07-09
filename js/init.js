@@ -77,5 +77,3 @@ function resetPlayer() {
 setOnURLChange(function(url) {
     if (url.indexOf("/watch/") == -1) resetPlayer();
 });
-
-var test = "hello";
