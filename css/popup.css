@@ -30,3 +30,13 @@ span.key {
     font-family: monospace;
     font-size: 1em;
 }
+
+.feedback {
+    padding: 0.5em;
+    border-radius: 0.25em;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+p.feedback>a {
+    color: white;
+}
