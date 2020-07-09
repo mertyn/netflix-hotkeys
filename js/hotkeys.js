@@ -200,6 +200,10 @@ function setupHotkeys() {
                 case "shift+_": decreaseSubtitles(); break;
 
                 case "h": ui.toggle("hotkeys-help"); break;
+
+                // Debugging hotkeys
+                case "shift+q": ui.toggle("subtitles"); break;
+                case "shift+w": ui.toggle("audio"); break;
             }
         }
     }

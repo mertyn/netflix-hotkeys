@@ -84,6 +84,7 @@ div.nfhk-popup div.nfhk-list h3.nfhk-list-header {
 div.nfhk-popup div.nfhk-list ul {
     margin: 0 0 1em 0;
     padding: 0;
+    width: 100%;
     list-style: none;
 }
 
