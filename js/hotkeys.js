@@ -206,7 +206,12 @@ function setupHotkeys() {
                 case "shift+w": ui.toggle("audio"); break;
             }
         }
-    }
+    };
+
+    // Close UI when reloading
+    window.onbeforeunload = function() {
+        ui.hideAll();
+    };
 }
 
 function removeHotkeys() {

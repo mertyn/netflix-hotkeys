@@ -67,6 +67,7 @@ function onPlayerLoaded() {
 // Wait for player being loaded -> wait for .AkiraPlayer
 waitForElement(".AkiraPlayer", onPlayerLoaded);
 
+// Reset player on url change
 function resetPlayer() {
     console.log("player reset.");
     removeHotkeys();
@@ -76,11 +77,5 @@ function resetPlayer() {
 setOnURLChange(function(url) {
     if (url.indexOf("/watch/") == -1) resetPlayer();
 });
-
-// document.addEventListener("click", function(e) {
-//     if (e.target.matches("[data-uia='nfplayer-exit']")) {
-//         resetPlayer();
-//     }
-// });
 
 var test = "hello";
