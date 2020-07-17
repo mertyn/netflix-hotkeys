@@ -187,6 +187,9 @@ function setupHotkeys() {
                 case "k": playPause(); break;
                 case "l": skip(5000); break;
 
+                case "Home": setChapter(0); break;
+                case "End": setChapter(10); break;
+
                 // case ",": if (player.isPaused) skip(-41); break;
                 // case ".": if (player.isPaused) skip(41); break;
 
