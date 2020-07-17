@@ -55,8 +55,8 @@ function onPlayerReady() {
     window.nf_player = getNetflixPlayer();
     
     // Pause and mute immediately for debugging
-    window.nf_player.pause();
-    window.nf_player.setMuted(true)
+    // window.nf_player.pause();
+    // window.nf_player.setMuted(true)
 }
 
 // Wait for player ready -> wait for spinner deletion
