@@ -140,14 +140,19 @@ function setupHotkeys() {
         var currentSpeed = player.getPlaybackRate();
         currentSpeed += 0.25;
         player.setPlaybackRate(currentSpeed);
-        console.log(player.getPlaybackRate())
+        displaySpeed();
     }
 
     function speedDown() {
         var currentSpeed = player.getPlaybackRate();
         if (currentSpeed > 0.25) currentSpeed -= 0.25;
         player.setPlaybackRate(currentSpeed);
-        console.log(player.getPlaybackRate())
+        displaySpeed();
+    }
+
+    function displaySpeed() {
+        var speed = player.getPlaybackRate();
+        ui.showTooltip(speed + "x", 700);
     }
 
     function displayVolume() {

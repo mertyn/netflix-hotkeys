@@ -126,10 +126,10 @@ const ui = {
         var tooltip = document.querySelector("div.nfhk-tooltip");
         tooltip.innerText = text;
 
-        clearTimeout(this.tooltipTimer);
         tooltip.classList.add("visible");
+        clearTimeout(this.tooltipTimer);
 
-        timer = setTimeout(function() {
+        this.tooltipTimer = setTimeout(function() {
             tooltip.classList.remove("visible");
         }, timeout);
     },
