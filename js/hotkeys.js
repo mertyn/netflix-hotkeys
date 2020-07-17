@@ -136,6 +136,20 @@ function setupHotkeys() {
         ui.showTimed("subtitles", 900);
     }
 
+    function speedUp() {
+        var currentSpeed = player.getPlaybackRate();
+        currentSpeed += 0.25;
+        player.setPlaybackRate(currentSpeed);
+        console.log(player.getPlaybackRate())
+    }
+
+    function speedDown() {
+        var currentSpeed = player.getPlaybackRate();
+        if (currentSpeed > 0.25) currentSpeed -= 0.25;
+        player.setPlaybackRate(currentSpeed);
+        console.log(player.getPlaybackRate())
+    }
+
     function increaseSubtitles() {
         var size = player.getTimedTextSettings().size;
 
@@ -190,6 +204,9 @@ function setupHotkeys() {
                 case "shift+c": switchSubtitles(); break;
                 case "c": toggleSubtitles(); break;
                 case "v": switchAudio(); break;
+
+                case "shift+:": speedUp(); break;
+                case "shift+;": speedDown(); break;
 
                 case "shift+*": increaseSubtitles(); break;
                 case "shift+_": decreaseSubtitles(); break;
