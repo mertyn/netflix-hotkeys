@@ -60,8 +60,6 @@ function setupHotkeys() {
         }, 900);
     }
 
-    var subtitlesMenuTimer;
-
     function switchSubtitles() {
         ui.show("subtitles");
         var currentTrack = player.getTextTrack();
@@ -90,10 +88,7 @@ function setupHotkeys() {
         ui.updateSubtitles(player);
         console.log("Subtitles set to " + nextTrack.displayName);
 
-        clearTimeout(subtitlesMenuTimer);
-        subtitlesMenuTimer = setTimeout(function() {
-            ui.hide("subtitles");
-        }, 900);
+        ui.showTimed("subtitles", 900);
     }
 
     var lastSubtitles;
@@ -138,10 +133,7 @@ function setupHotkeys() {
         ui.updateSubtitles(player);
         console.log("Toggled subtitles to: " + player.getTextTrack().displayName);
 
-        clearTimeout(subtitlesMenuTimer);
-        subtitlesMenuTimer = setTimeout(function() {
-            ui.hide("subtitles");
-        }, 1000);
+        ui.showTimed("subtitles", 900);
     }
 
     function increaseSubtitles() {

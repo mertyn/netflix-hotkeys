@@ -51,6 +51,17 @@ const ui = {
         element.classList.add("visible");
     },
 
+    timer: 0,
+
+    showTimed: function(id, timeout) {
+        this.show(id);
+        clearTimeout(timer);
+        
+        timer = setTimeout(function() {
+            ui.hide(id)
+        }, timeout);
+    },
+
     hide: function(id) {
         var element = document.querySelector(`div.nfhk-popup#${id}`);
         element.classList.remove("visible");
