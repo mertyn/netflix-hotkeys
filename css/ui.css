@@ -34,7 +34,7 @@ div.nfhk-popup {
     border-radius: 0.3em;
 }    
 
-div.nfhk-popup.visible {
+div.nfhk-popup.visible, .nfhk-tooltip.visible {
     visibility: visible;
 }
 
@@ -107,4 +107,24 @@ div.nfhk-popup span.nfhk-key {
 
     border: 1px solid #b3b3b3;
     font-family: monospace;
+}
+
+div.nfhk-tooltip {
+    width: 4.5em;
+    padding: 0.6em 0;
+    font-size: 1.5em;
+
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, 0%) scale(2);
+    /* transform: translate(-50%, -50%); */
+
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0.25em;
+    text-align: center;
 }

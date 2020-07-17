@@ -150,6 +150,11 @@ function setupHotkeys() {
         console.log(player.getPlaybackRate())
     }
 
+    function displayVolume() {
+        var volume = Math.round( player.getVolume() * 100 );
+        ui.showTooltip(volume + "%", 700);
+    }
+
     function increaseSubtitles() {
         var size = player.getTimedTextSettings().size;
 
@@ -180,12 +185,10 @@ function setupHotkeys() {
         var key = e.key.toLowerCase();
         var shift = e.shiftKey ? "shift+" : "";
         var keyString = shift + key;
-        // console.log(keyString);
 
         // Set the chapter
-        if (e.keyCode >= 48 && e.keyCode <= 57) {
-            setChapter(e.keyCode - 48);
-        }
+        if (e.keyCode >= 48 && e.keyCode <= 57) setChapter(e.keyCode - 48);
+
         else {
             // Assign actions to hotkeys
             switch(keyString) {
@@ -216,8 +219,13 @@ function setupHotkeys() {
                 // Debugging hotkeys
                 case "shift+q": ui.toggle("subtitles"); break;
                 case "shift+w": ui.toggle("audio"); break;
+
             }
         }
+    };
+
+    document.onkeydown = function(e) {
+        if (e.key == "ArrowUp" || e.key == "ArrowDown") displayVolume();
     };
 
     // Close UI when reloading

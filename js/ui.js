@@ -55,9 +55,9 @@ const ui = {
 
     showTimed: function(id, timeout) {
         this.show(id);
-        clearTimeout(timer);
+        clearTimeout(this.timer);
         
-        timer = setTimeout(function() {
+        this.timer = setTimeout(function() {
             ui.hide(id)
         }, timeout);
     },
@@ -118,6 +118,20 @@ const ui = {
                 item.classList.add("selected");
             }
         });
+    },
+
+    tooltipTimer: 0,
+    showTooltip: function(text, timeout) {
+        this.hideAll();
+        var tooltip = document.querySelector("div.nfhk-tooltip");
+        tooltip.innerText = text;
+
+        clearTimeout(this.tooltipTimer);
+        tooltip.classList.add("visible");
+
+        timer = setTimeout(function() {
+            tooltip.classList.remove("visible");
+        }, timeout);
     },
 
     remove: function() {
