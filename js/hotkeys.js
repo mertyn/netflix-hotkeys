@@ -1,6 +1,11 @@
 function setupHotkeys() {
+    // Init player and UI
     var player = getNetflixPlayer();
     ui.init(player);
+
+    // Init other variables
+    var audioMenuTimer;
+    var lastSubtitles;
 
     function playPause() {
         if (player.isPlaying()) player.pause();
@@ -29,8 +34,6 @@ function setupHotkeys() {
         var nextButton = document.querySelector(".button-nfplayerNextEpisode");
         if (nextButton) nextButton.click();
     }
-
-    var audioMenuTimer;
 
     function switchAudio() {
         ui.show("audio");
@@ -90,8 +93,6 @@ function setupHotkeys() {
 
         ui.showTimed("subtitles", 900);
     }
-
-    var lastSubtitles;
 
     function toggleSubtitles() {
         ui.show("subtitles");
