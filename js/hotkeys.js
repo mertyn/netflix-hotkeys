@@ -63,6 +63,23 @@ function setupHotkeys() {
         }, 900);
     }
 
+    function getOffSubtitles() {
+        var trackList = player.getTextTrackList();
+        var offTrack;
+
+        for (var track in trackList) {
+            if (
+                track.displayName == "Off" ||
+                track.displayName == "Aus"
+            ) {
+                offTrack = track;
+                break;
+            }
+        }
+
+        return offTrack;
+    }
+
     function switchSubtitles() {
         ui.show("subtitles");
         var currentTrack = player.getTextTrack();
