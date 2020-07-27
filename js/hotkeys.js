@@ -202,8 +202,6 @@ function setupHotkeys() {
         var shift = e.shiftKey ? "shift+" : "";
         var keyString = shift + key;
 
-        console.log(keyString);
-
         // Set the chapter
         if (e.keyCode >= 48 && e.keyCode <= 57) setChapter(e.keyCode - 48);
 
