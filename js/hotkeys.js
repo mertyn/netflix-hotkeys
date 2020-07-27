@@ -190,7 +190,7 @@ function setupHotkeys() {
     }
 
     // Add commands to hotkeys
-    document.onkeypress = function(e) {
+    document.onkeydown = function(e) {
         // Detect if player has changed and update
         if (!player.isReady()) {
             player = getNetflixPlayer();
@@ -202,6 +202,8 @@ function setupHotkeys() {
         var shift = e.shiftKey ? "shift+" : "";
         var keyString = shift + key;
 
+        console.log(keyString);
+
         // Set the chapter
         if (e.keyCode >= 48 && e.keyCode <= 57) setChapter(e.keyCode - 48);
 
@@ -212,35 +214,31 @@ function setupHotkeys() {
                 case "k": playPause(); break;
                 case "l": skip(5000); break;
 
-                case "Home": setChapter(0); break;
-                case "End": setChapter(10); break;
-
-                // case ",": if (player.isPaused) skip(-41); break;
-                // case ".": if (player.isPaused) skip(41); break;
+                case "home": setChapter(0); break;
+                case "end": setChapter(10); break;
 
                 case "shift+n": nextEpisode(); break;
 
                 case "shift+c": switchSubtitles(); break;
                 case "c": toggleSubtitles(); break;
                 case "v": switchAudio(); break;
-
+                
+                case "arrowup": displayVolume(); break;
+                case "arrowdown": displayVolume(); break;
+                
                 case "shift+:": speedUp(); break;
                 case "shift+;": speedDown(); break;
 
+                case "h": ui.toggle("hotkeys-help"); break;
+                
                 case "shift+*": increaseSubtitles(); break;
                 case "shift+_": decreaseSubtitles(); break;
 
-                case "h": ui.toggle("hotkeys-help"); break;
-
                 // Debugging hotkeys
                 case "shift+q": ui.toggle("subtitles"); break;
-                case "shift+w": ui.toggle("audio"); break;         
+                case "shift+w": ui.toggle("audio"); break;
             }
         }
-    };
-
-    document.onkeydown = function(e) {
-        if (e.key == "ArrowUp" || e.key == "ArrowDown") displayVolume();
     };
 
     // Close UI when reloading
