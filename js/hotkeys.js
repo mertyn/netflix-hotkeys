@@ -67,7 +67,9 @@ function setupHotkeys() {
         var trackList = player.getTextTrackList();
         var offTrack;
 
-        for (var track in trackList) {
+        for (var i in trackList) {
+            var track = trackList[i];
+
             if (
                 track.displayName == "Off" ||
                 track.displayName == "Aus"
@@ -99,7 +101,7 @@ function setupHotkeys() {
         var nextTrack = trackList[currentTrackNum];
 
         // Skip off
-        if (nextTrack.bcp47 === null) {
+        if (nextTrack == getOffSubtitles()) {
             currentTrackNum = (currentTrackNum + 1) % trackList.length;
             nextTrack = trackList[currentTrackNum];
         }
@@ -116,18 +118,9 @@ function setupHotkeys() {
         var currentTrack = player.getTextTrack();
         var trackList = player.getTextTrackList();
 
-        if (currentTrack.bcp47 !== null) {
+        if (currentTrack != getOffSubtitles()) {
             lastSubtitles = currentTrack;
-            var offTrack;
-
-            for (var i = 0; i < trackList.length; i++) {
-                if (trackList[i].bcp47 === null) {
-                    offTrack = trackList[i];
-                    break;
-                }
-            }
-
-            player.setTextTrack(offTrack);
+            player.setTextTrack(getOffSubtitles());
         }
 
         else {
@@ -241,8 +234,7 @@ function setupHotkeys() {
 
                 // Debugging hotkeys
                 case "shift+q": ui.toggle("subtitles"); break;
-                case "shift+w": ui.toggle("audio"); break;
-
+                case "shift+w": ui.toggle("audio"); break;         
             }
         }
     };
