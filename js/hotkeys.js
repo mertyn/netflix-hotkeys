@@ -63,10 +63,14 @@ function setupHotkeys() {
         clearTimeout(audioMenuTimer);
         audioMenuTimer = setTimeout(function() {
             ui.hide("audio");
+
             var tracks = player.getAudioTrackList();
             player.setAudioTrack(tracks[audioTrackSelection]);
+
             audioTrackSelection = null;
             if (wasPlaying && player.isPaused()) player.play();
+
+            console.log("Audio set to: " + player.getAudioTrack().displayName);
         }, 900);
     }
 
