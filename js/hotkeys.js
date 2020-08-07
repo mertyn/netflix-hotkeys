@@ -54,7 +54,7 @@ function setupHotkeys() {
         var nextTrack = trackList[currentTrackNum];
 
         player.setAudioTrack(nextTrack);
-        ui.updateAudio(player);
+        ui.updateAudio(player.getAudioTrack());
         console.log("Audio set to " + nextTrack.displayName);
         
         clearTimeout(audioMenuTimer);

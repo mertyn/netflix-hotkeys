@@ -30,7 +30,7 @@ const ui = {
             audioList.appendChild(li);
         });
 
-        ui.updateAudio(player);
+        ui.updateAudio(player.getAudioTrack());
 
         // Init subtitles UI
         var textList = document.querySelector("div.nfhk-popup#subtitles div>ul");
@@ -94,14 +94,14 @@ const ui = {
         }); 
     },
 
-    updateAudio: function(player) {
+    updateAudio: function(currentTrack) {
         var audioTracks = document.querySelectorAll("div.nfhk-popup#audio div>ul>li");
-        var audioTrack = player.getAudioTrack();
+        // var audioTrack = player.getAudioTrack();
 
         audioTracks.forEach(function(item) {
             item.classList.remove("selected");
 
-            if (item.innerHTML == audioTrack.displayName) {
+            if (item.innerHTML == currentTrack.displayName) {
                 item.classList.add("selected");
             }
         });
