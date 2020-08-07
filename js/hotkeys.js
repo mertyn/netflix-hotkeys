@@ -5,6 +5,7 @@ function setupHotkeys() {
 
     // Init other variables
     var audioTrackSelection = null;
+    var wasPlaying;
     var audioMenuTimer;
     var lastSubtitles;
 
@@ -48,8 +49,11 @@ function setupHotkeys() {
                 }
             }
 
-            ui.updateAudio(currentTrack);
+            ui.updateAudio(trackList[audioTrackSelection]);
             ui.show("audio");
+
+            wasPlaying = player.isPlaying();
+            if (wasPlaying) player.pause();
         }
         else {
             audioTrackSelection = (audioTrackSelection + 1) % trackList.length;
@@ -62,6 +66,7 @@ function setupHotkeys() {
             var tracks = player.getAudioTrackList();
             player.setAudioTrack(tracks[audioTrackSelection]);
             audioTrackSelection = null;
+            if (wasPlaying && player.isPaused()) player.play();
         }, 900);
     }
 
