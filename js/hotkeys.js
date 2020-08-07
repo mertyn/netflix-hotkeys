@@ -4,6 +4,7 @@ function setupHotkeys() {
     ui.init(player);
 
     // Init other variables
+    var audioTrackSelection = null;
     var audioMenuTimer;
     var lastSubtitles;
 
@@ -36,30 +37,31 @@ function setupHotkeys() {
     }
 
     function switchAudio() {
-        ui.show("audio");
-        var currentTrack = player.getAudioTrack();
         var trackList = player.getAudioTrackList();
-        var currentTrackNum;
+        var currentTrack = player.getAudioTrack();
 
-        // Find position of current track
-        for (var i = 0; i < trackList.length; i++) {
-            if (currentTrack == trackList[i]) {
-                currentTrackNum = i;
-                break;
+        if (audioTrackSelection === null) {
+            for (var i = 0; i < trackList.length; i++) {
+                if (currentTrack == trackList[i]) {
+                    audioTrackSelection = i;
+                    break;
+                }
             }
-        }
-        
-        // Go to next position
-        currentTrackNum = (currentTrackNum + 1) % trackList.length;
-        var nextTrack = trackList[currentTrackNum];
 
-        player.setAudioTrack(nextTrack);
-        ui.updateAudio(player.getAudioTrack());
-        console.log("Audio set to " + nextTrack.displayName);
-        
+            ui.updateAudio(currentTrack);
+            ui.show("audio");
+        }
+        else {
+            audioTrackSelection = (audioTrackSelection + 1) % trackList.length;
+            ui.updateAudio(trackList[audioTrackSelection]);
+        }
+
         clearTimeout(audioMenuTimer);
         audioMenuTimer = setTimeout(function() {
             ui.hide("audio");
+            var tracks = player.getAudioTrackList();
+            player.setAudioTrack(tracks[audioTrackSelection]);
+            audioTrackSelection = null;
         }, 900);
     }
 
