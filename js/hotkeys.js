@@ -76,17 +76,19 @@ function setupHotkeys() {
 
     function getOffSubtitles() {
         var trackList = player.getTextTrackList();
+        var offTrackNames = ["Mati", "fra", "Aus", "Off", "Desactivados", "Désactivé", "disattivati", "Imezimwa", "Ki", "Uit", "av", "wyłączone", "desligadas", "niciuna", "Pois käytöstä", "av", "Tắt", "Kapalı", "Vypnuto", "Ανενεργοί", "ללא", "إيقاف التشغيل", "ऑफ़", "ปิด", "关闭", "オフ", "끄기"];
         var offTrack;
 
         for (var i in trackList) {
             var track = trackList[i];
 
-            if (
-                track.displayName == "Off" ||
-                track.displayName == "Aus"
-            ) {
-                offTrack = track;
-                break;
+            for (var j in offTrackNames) {
+                var name = offTrackNames[j];
+
+                if (track.displayName == name) {
+                    offTrack = track;
+                    break;
+                }
             }
         }
 
@@ -139,7 +141,7 @@ function setupHotkeys() {
                 var onTrack;
 
                 for (var i = 0; i < trackList.length; i++) {
-                    if (trackList[i].bcp47 !== null) {
+                    if (trackList[i] !== getOffSubtitles()) {
                         onTrack = trackList[i];     
                         break;
                     }
