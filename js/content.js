@@ -39,6 +39,7 @@ function injectScript(urls) {
 injectScript([
     "js/arrive.min.js",
     "js/mousetrap.min.js",
+    "js/player.js",
     "js/init.js"
 ]);
 
