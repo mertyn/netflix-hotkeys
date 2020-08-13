@@ -8,6 +8,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             tabId: sender.tab.id,
             path: "icons/icon-32.png"
         });
+
+        // Remove popup
+        chrome.browserAction.setPopup({
+            tabId: sender.tab.id,
+            popup: ""
+        });
     }
 
     else if (request == "disableBrowserAction") {
@@ -17,6 +23,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         chrome.browserAction.setIcon({
             tabId: sender.tab.id,
             path: "icons/icon-32-off.png"
+        });
+
+        // Remove popup
+        chrome.browserAction.setPopup({
+            tabId: sender.tab.id,
+            popup: "html/popup.html"
         });
     }
 });

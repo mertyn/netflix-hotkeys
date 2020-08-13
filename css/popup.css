@@ -1,0 +1,52 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 250px;
+    padding: 1.75em 2em;
+
+    background: #262626;
+    color: white;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    /* Disable text selection */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h2 {
+    margin-top: 0;
+    cursor: default;
+}
+
+p {
+    margin-bottom: 0;
+    line-height: 1.4em;
+    cursor: default;
+}
+
+span.key {
+    border-radius: 0.25em;
+    margin-bottom: 0.25em;
+    padding: 0.1em 0.4em;
+
+    border: 1px solid #b3b3b3;
+    font-family: monospace;
+    font-size: 1em;
+}
+
+.feedback {
+    padding: 0.5em;
+    border-radius: 0.25em;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+p.feedback>a {
+    color: white;
+}
