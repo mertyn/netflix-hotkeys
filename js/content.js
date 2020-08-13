@@ -17,6 +17,7 @@ function clearUrlListener(id) {
     clearInterval(id);
 }
 
+// If location.href.match("*://www.netflix.com/watch/*")
 if (location.href.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
     chrome.runtime.sendMessage("enableBrowserAction");
 }
