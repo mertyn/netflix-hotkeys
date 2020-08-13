@@ -13,5 +13,17 @@
 
     "browser_action": {
         "default_icon": "icons/icon-32-off.png"
-    }
+    },
+
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+
+    "content_scripts": [
+        {
+            "js": ["js/content.js"],
+            "matches": ["*://*.netflix.com/*"],
+            "run_at": "document_end"
+        }
+    ]
 }
