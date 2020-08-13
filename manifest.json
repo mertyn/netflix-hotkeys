@@ -31,5 +31,7 @@
             "matches": ["*://*.netflix.com/browse/*", "*://*.netflix.com/title/*", "*://*.netflix.com/watch/*"],
             "run_at": "document_end"
         }
-    ]
+    ],
+
+    "web_accessible_resources": ["js/url.js", "js/arrive.min.js", "js/mousetrap.min.js", "js/init.js"]
 }
