@@ -20,8 +20,8 @@ function clearUrlListener(id) {
 function injectScript(urls) {
     function inject(url) {
         var script = document.createElement("script")
-        script.src = chrome.extension.getURL(url);
         script.classList.add("netflix-hotkeys");
+        script.src = chrome.extension.getURL(url);
         document.body.appendChild(script);
     }
 
@@ -35,6 +35,12 @@ function injectScript(urls) {
 }
 
 //==================================================================================
+
+injectScript([
+    "js/arrive.min.js",
+    "js/mousetrap.min.js",
+    "js/init.js"
+]);
 
 // If location.href.match("*://www.netflix.com/watch/*")
 if (location.href.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
