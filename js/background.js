@@ -14,6 +14,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             tabId: sender.tab.id,
             popup: ""
         });
+
+        chrome.browserAction.onClicked.addListener(function(tab) {
+            chrome.tabs.sendMessage(tab.id, "browserActionClicked");
+            console.log("BroweserAction clicked at", tab.id);
+        });
     }
 
     else if (request == "disableBrowserAction") {
