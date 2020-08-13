@@ -28,7 +28,7 @@
     "content_scripts": [
         {
             "js": ["js/content.js"],
-            "matches": ["*://*.netflix.com/*"],
+            "matches": ["*://*.netflix.com/browse/*", "*://*.netflix.com/title/*", "*://*.netflix.com/watch/*"],
             "run_at": "document_end"
         }
     ]
