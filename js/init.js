@@ -28,3 +28,7 @@ document.arrive(".AkiraPlayer video", function() {
     window.player = player;
     player.player.pause();
 });
+
+document.releaseEvents(".AkiraPlayer video", function() {
+    Mousetrap.reset();
+});
