@@ -15,6 +15,10 @@ function clearUrlListener(id) {
     clearInterval(id);
 }
 
+if (location.href.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
+    chrome.runtime.sendMessage("enableBrowserAction");
+}
+
 setUrlListener(function(url) {
     console.log(`Href changed to ${url}`);
 
