@@ -17,6 +17,23 @@ function clearUrlListener(id) {
     clearInterval(id);
 }
 
+function injectScript(urls) {
+    function inject(url) {
+        var script = document.createElement("script")
+        script.src = chrome.extension.getURL(url);
+        script.classList.add("netflix-hotkeys");
+        document.body.appendChild(script);
+    }
+
+    if (!Array.isArray(urls)) inject(urls);
+    else {
+        for (var i in urls) {
+            var url = urls[i];
+            inject(url);
+        }
+    }
+}
+
 // If location.href.match("*://www.netflix.com/watch/*")
 if (location.href.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
     chrome.runtime.sendMessage("enableBrowserAction");
