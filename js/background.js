@@ -9,6 +9,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             path: "icons/icon-32.png"
         });
 
+        // Set enabled text
+        chrome.browserAction.setTitle({
+            tabId: sender.tab.id,
+            title: "Netflix Hotkeys - Enabled"
+        });
+
         // Remove popup
         chrome.browserAction.setPopup({
             tabId: sender.tab.id,
@@ -29,6 +35,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         chrome.browserAction.setIcon({
             tabId: sender.tab.id,
             path: "icons/icon-32-off.png"
+        });
+
+        // Set disabled text
+        chrome.browserAction.setTitle({
+            tabId: sender.tab.id,
+            title: "Netflix Hotkeys - Disabled"
         });
 
         // Remove popup
