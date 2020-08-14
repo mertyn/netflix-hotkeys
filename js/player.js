@@ -14,7 +14,7 @@ class PlayerInterface {
     }
 
     getTrackNumber(current, list) {
-        for (var i in list) {
+        for (var i = 0; i < list.length; i++) {
             if (current == list[i]) {
                 return i;
             }
@@ -88,5 +88,23 @@ class PlayerInterface {
 
         // Replace this with ui function
         console.log(`${speed}x`);
+    }
+
+    switchSubtitles() {
+        var current = this.player.getTextTrack();
+        var list = this.player.getTextTrackList();
+        
+        var number = this.getTrackNumber(current, list);
+        number = this.wrapIncrement(number, list.length);
+        
+        var next = list[number];
+        if (next == this.getTextTrackOff()) {
+            number = this.wrapIncrement(number, list.length);
+            next = list[number];
+        };
+
+        this.player.setTextTrack(next);
+        // Update and show ui here
+        console.log("Subtitles set to " + next.displayName);
     }
 }
