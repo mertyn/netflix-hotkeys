@@ -1,14 +1,45 @@
 class PlayerInterface {
     constructor() {
-        this.player = this.#getNetflixPlayer();
+        this.player = this.getNetflixPlayer();
     }
     
-    #getNetflixPlayer() {
+    // Util functions
+    // ==============================================================================================
+
+    getNetflixPlayer() {
         var videoPlayer = window.netflix.appContext.state.playerApp.getAPI().videoPlayer;
         var sessionId = videoPlayer.getAllPlayerSessionIds()[0];
         
         return videoPlayer.getVideoPlayerBySessionId(sessionId);    
     }
+
+    getTrackNumber(current, list) {
+        for (var i in list) {
+            if (current == list[i]) {
+                return i;
+            }
+        }
+    }
+
+    getTextTrackOff() {
+        var list = this.player.getTextTrackList();
+        var offNames = ["Mati", "fra", "Aus", "Off", "Desactivados", "Désactivé", "disattivati", "Imezimwa", "Ki", "Uit", "av", "wyłączone", "desligadas", "niciuna", "Pois käytöstä", "av", "Tắt", "Kapalı", "Vypnuto", "Ανενεργοί", "ללא", "إيقاف التشغيل", "ऑफ़", "ปิด", "关闭", "オフ", "끄기"];
+
+        // Check if name is in list for every track until offtrack is found
+        for (var i in list) {
+            for (var j in offNames) {
+                if (list[i].displayName == offNames[j]) 
+                    return list[i];
+            }
+        }
+    }
+
+    wrapIncrement(number, max) {
+        return (number + 1) % max;
+    }
+
+    // Interaction functions
+    // ==============================================================================================
 
     playPause() {
         if (this.player.isPlaying()) this.player.pause();
