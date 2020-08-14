@@ -1,6 +1,7 @@
 class PlayerInterface {
     constructor() {
         this.player = this.getNetflixPlayer();
+        this.lastSubtitles = null;
     }
     
     // Util functions
@@ -18,6 +19,12 @@ class PlayerInterface {
             if (current == list[i]) {
                 return i;
             }
+        }
+    }
+
+    getTextTrackOn(list) {
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] != this.getTextTrackOff()) return list[i];
         }
     }
 
@@ -90,6 +97,29 @@ class PlayerInterface {
         console.log(`${speed}x`);
     }
 
+    toggleSubtitles() {
+        var current = this.player.getTextTrack();
+        var list = this.player.getTextTrackList();
+
+        if (current != this.getTextTrackOff()) {
+            this.lastSubtitles = current;
+            this.player.setTextTrack(this.getTextTrackOff());
+        }
+
+        else {
+            if (this.lastSubtitles == null) {
+                var on = this.getTextTrackOn(list);
+                this.player.setTextTrack(on);
+            }
+
+            else {
+                this.player.setTextTrack(this.lastSubtitles);
+            }
+        }
+
+        console.log("Toggled subtitles to", this.player.getTextTrack().displayName);
+    }
+
     switchSubtitles() {
         var current = this.player.getTextTrack();
         var list = this.player.getTextTrackList();
@@ -105,6 +135,6 @@ class PlayerInterface {
 
         this.player.setTextTrack(next);
         // Update and show ui here
-        console.log("Subtitles set to " + next.displayName);
+        console.log("Subtitles set to", next.displayName);
     }
 }

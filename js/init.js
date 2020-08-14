@@ -33,7 +33,7 @@ document.arrive(".AkiraPlayer video", function() {
     Mousetrap.bind("v", function() { /* player.switchAudio() */ });
 
     // Subtitles
-    Mousetrap.bind("c", function() { /* player.toggleSubtitles() */ });
+    Mousetrap.bind("c", function() { player.toggleSubtitles() });
     Mousetrap.bind("shift+c", function() { player.switchSubtitles() });
     
     // Make player global for debugging
