@@ -1,10 +1,13 @@
+// Listen for player initialization
 document.arrive(".AkiraPlayer video", function() {
     var player = new PlayerInterface();
     
-    Mousetrap.bind("j", function() { player.skip(-5000)});
+    // Simple control
     Mousetrap.bind("k", function() { player.playPause() });
+    Mousetrap.bind("j", function() { player.skip(-5000)});
     Mousetrap.bind("l", function() { player.skip(5000) });
     
+    // Seeking functions
     Mousetrap.bind("home", function() { player.seekPercentage(0) });
     Mousetrap.bind("end", function() { player.seekPercentage(100) });
     
@@ -19,16 +22,26 @@ document.arrive(".AkiraPlayer video", function() {
     Mousetrap.bind("8", function() { player.seekPercentage(80) });
     Mousetrap.bind("9", function() { player.seekPercentage(90) });
     
+    // Next episode
     Mousetrap.bind("shift+n", function() { player.nextEpisode() });
     
+    // Speed controls
     Mousetrap.bind("shift+.", function() { player.speedUp() });
     Mousetrap.bind("shift+,", function() { player.speedDown() });
+
+    // Audio
+    Mousetrap.bind("v", function() { /* player.switchAudio() */ });
+
+    // Subtitles
+    Mousetrap.bind("c", function() { /* player.toggleSubtitles() */ });
+    Mousetrap.bind("shift+c", function() { player.switchSubtitles() });
     
     // Make player global for debugging
     window.player = player;
     player.player.pause();
 });
 
+// Listen for player destroy
 document.releaseEvents(".AkiraPlayer video", function() {
     Mousetrap.reset();
 });

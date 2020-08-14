@@ -1,5 +1,6 @@
 console.log("Content script started.");
 
+// Listen for url changes
 function setUrlListener(callback) {
     var currentUrl = location.href;
 
