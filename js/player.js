@@ -101,20 +101,22 @@ class PlayerInterface {
         var current = this.player.getTextTrack();
         var list = this.player.getTextTrackList();
 
+        // Currently not off
         if (current != this.getTextTrackOff()) {
             this.lastSubtitles = current;
             this.player.setTextTrack(this.getTextTrackOff());
         }
 
+        // Currently off
         else {
+            // No last subtitles saved
             if (this.lastSubtitles == null) {
                 var on = this.getTextTrackOn(list);
                 this.player.setTextTrack(on);
             }
 
-            else {
-                this.player.setTextTrack(this.lastSubtitles);
-            }
+            // Last subtitles saved
+            else this.player.setTextTrack(this.lastSubtitles);
         }
 
         console.log("Toggled subtitles to", this.player.getTextTrack().displayName);
