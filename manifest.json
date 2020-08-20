@@ -28,6 +28,7 @@
     "content_scripts": [
         {
             "js": ["js/content.js"],
+            "css": ["css/ui.css"],
             "matches": ["*://*.netflix.com/browse/*", "*://*.netflix.com/title/*", "*://*.netflix.com/watch/*"],
             "run_at": "document_end"
         }

@@ -35,7 +35,19 @@ document.arrive(".AkiraPlayer video", function() {
     // Subtitles
     Mousetrap.bind("c", function() { player.toggleSubtitles() });
     Mousetrap.bind("shift+c", function() { player.switchSubtitles() });
-    
+
+    // Volume display
+    Mousetrap.bind("up", function() { player.showVolume() });
+    Mousetrap.bind("down", function() { player.showVolume() });
+
+    // Help menu
+    Mousetrap.bind("h", function() { player.ui.togglePopup("help") });
+
+    // Debug ui toggles
+    Mousetrap.bind("q", function() { player.ui.togglePopup("audio") });
+    Mousetrap.bind("w", function() { player.ui.togglePopup("subtitles") });
+    Mousetrap.bind("e", function() { player.ui.hideAllPopups() });
+
     // Make player global for debugging
     window.player = player;
     player.player.pause();

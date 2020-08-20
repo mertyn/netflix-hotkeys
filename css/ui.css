@@ -1,8 +1,8 @@
-body>div.netflix-hotkeys {
+body>div.netflix-hotkeys-ui {
     display: none;
 }
 
-.netflix-hotkeys {
+.netflix-hotkeys-ui {
     width: 100%;
     height: 100%;
     left: 0;

@@ -1,6 +1,7 @@
 class PlayerInterface {
     constructor() {
         this.player = this.getNetflixPlayer();
+        this.ui = new UserInterface();
         this.lastSubtitles = null;
     }
     
@@ -81,20 +82,20 @@ class PlayerInterface {
 
     speedUp() {
         var speed = this.player.getPlaybackRate();
+
         if (speed < 2) speed += 0.25;
         this.player.setPlaybackRate(speed);
 
-        // Replace this with ui function
-        console.log(`${speed}x`);
+        this.ui.showTooltip(`${speed}x`);
     }
 
     speedDown() {
         var speed = this.player.getPlaybackRate();
+        
         if (speed > 0.25) speed -= 0.25;
         this.player.setPlaybackRate(speed);
 
-        // Replace this with ui function
-        console.log(`${speed}x`);
+        this.ui.showTooltip(`${speed}x`);
     }
 
     toggleSubtitles() {
@@ -138,5 +139,13 @@ class PlayerInterface {
         this.player.setTextTrack(next);
         // Update and show ui here
         console.log("Subtitles set to", next.displayName);
+    }
+
+    showVolume() {
+        var volume = this.player.getVolume();
+        console.log(volume);
+        volume *= 100;
+        volume = Math.floor(volume);
+        this.ui.showTooltip(`${volume}%`);
     }
 }
