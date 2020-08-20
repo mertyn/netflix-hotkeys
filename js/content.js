@@ -18,6 +18,25 @@ function clearUrlListener(id) {
     clearInterval(id);
 }
 
+function injectMarkup(url, selector) {
+
+    function onload(html) {
+        var div = document.createElement("div");
+        
+        div.classList.add("netflix-hotkeys-ui");
+        div.innerHTML = html;
+        
+        var target = document.querySelector(selector);
+        target.appendChild(div);
+    }
+
+    url = chrome.extension.getURL(url);
+
+    fetch(url).then(function(response) {
+        return response.text()
+    }).then(onload);
+}
+
 function injectScripts(urls) {
     // Create div with class netflix-hotkeys
     var div = document.createElement("div");
@@ -35,6 +54,8 @@ function injectScripts(urls) {
 }
 
 //==================================================================================
+
+injectMarkup("html/ui.html", "body");
 
 injectScripts([
     "js/arrive.min.js",
