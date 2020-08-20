@@ -18,26 +18,25 @@ function clearUrlListener(id) {
     clearInterval(id);
 }
 
-function injectScript(urls) {
-    function inject(url) {
-        var script = document.createElement("script")
-        script.classList.add("netflix-hotkeys");
-        script.src = chrome.extension.getURL(url);
-        document.body.appendChild(script);
+function injectScripts(urls) {
+    // Create div with class netflix-hotkeys
+    var div = document.createElement("div");
+    div.classList.add("netflix-hotkeys");
+
+    // Add all scripts to the div
+    for (var i in urls) {
+        var script = document.createElement("script");
+        script.src = chrome.extension.getURL(urls[i]);
+        div.appendChild(script);
     }
 
-    if (!Array.isArray(urls)) inject(urls);
-    else {
-        for (var i in urls) {
-            var url = urls[i];
-            inject(url);
-        }
-    }
+    // Append the div to the document
+    document.body.appendChild(div);
 }
 
 //==================================================================================
 
-injectScript([
+injectScripts([
     "js/arrive.min.js",
     "js/mousetrap.min.js",
     "js/ui.js",
