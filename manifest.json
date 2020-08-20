@@ -33,5 +33,5 @@
         }
     ],
 
-    "web_accessible_resources": ["js/arrive.min.js", "js/mousetrap.min.js", "js/player.js", "js/init.js"]
+    "web_accessible_resources": ["html/ui.html", "js/arrive.min.js", "js/mousetrap.min.js", "js/ui.js", "js/player.js", "js/init.js"]
 }
