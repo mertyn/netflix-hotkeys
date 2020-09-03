@@ -16,6 +16,16 @@ class UserInterface {
         ui.addEventListener("contextmenu", function(e) {
             e.preventDefault();
         });
+
+        // Add onclick to close buttons
+        var closeButtons = document.querySelectorAll(".nfhk-popup-close");
+        closeButtons.forEach(function(button) {
+            button.addEventListener("click", function(e) {
+                var parent = button.parentElement;
+                if (parent.classList.contains("nfhk-popup"))
+                    parent.classList.remove("visible");
+            });
+        });
     }
 
     isVisible(id) {
