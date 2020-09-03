@@ -88,5 +88,8 @@ setUrlListener(function(url) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request == "browserActionClicked") {
         console.log("BrowserAction has been clicked!");
+
+        var help = document.querySelector("div.nfhk-popup#help");
+        if (help) help.classList.toggle("visible");
     }
 });
