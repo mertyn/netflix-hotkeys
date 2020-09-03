@@ -120,6 +120,8 @@ class PlayerInterface {
             else this.player.setTextTrack(this.lastSubtitles);
         }
 
+        this.ui.updateSubtitles();
+        this.ui.showPopupTimed("subtitles", 900);
         console.log("Toggled subtitles to", this.player.getTextTrack().displayName);
     }
 
@@ -137,7 +139,8 @@ class PlayerInterface {
         };
 
         this.player.setTextTrack(next);
-        // Update and show ui here
+        this.ui.updateSubtitles();
+        this.ui.showPopupTimed("subtitles", 900);
         console.log("Subtitles set to", next.displayName);
     }
 

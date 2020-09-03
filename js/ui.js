@@ -3,6 +3,7 @@ class UserInterface {
         // Variables
         this.player = player;
         this.tooltipTimer = null;
+        this.popupTimer = null;
 
         // Init
 
@@ -41,6 +42,8 @@ class UserInterface {
             listElement.appendChild(li);
         });
 
+        this.updateAudio();
+
         // Subtitles
         listElement = document.querySelector("div.nfhk-popup#subtitles div.nfhk-list>ul");
         tracks = this.player.getTextTrackList();
@@ -50,6 +53,8 @@ class UserInterface {
             li.innerText = track.displayName;
             listElement.appendChild(li);
         });
+
+        this.updateSubtitles();
     }
 
     isVisible(id) {
@@ -61,6 +66,16 @@ class UserInterface {
         this.hideAllPopups();
         var target = document.querySelector(`div.nfhk-popup#${id}`);
         target.classList.add("visible");
+    }
+
+    showPopupTimed(id, timeout) {
+        this.showPopup(id);
+
+        clearTimeout(this.popupTimer);
+        this.popupTimer = setTimeout(function() {
+            var target = document.querySelector(`div.nfhk-popup#${id}`);
+            target.classList.remove("visible");
+        }, timeout);
     }
 
     hidePopup(id) {
@@ -93,5 +108,29 @@ class UserInterface {
         this.tooltipTimer = setTimeout(function() {
             tooltip.classList.remove("visible");
         }, 900);
+    }
+
+    updateAudio() {
+        var trackElements = document.querySelectorAll("div.nfhk-popup#audio div.nfhk-list>ul>li");
+        var current = this.player.getAudioTrack();
+
+        trackElements.forEach(function(item) {
+            item.classList.remove("selected");
+
+            if (item.innerHTML == current.displayName)
+                item.classList.add("selected");
+        });
+    }
+
+    updateSubtitles() {
+        var trackElements = document.querySelectorAll("div.nfhk-popup#subtitles div.nfhk-list>ul>li");
+        var current = this.player.getTextTrack();
+
+        trackElements.forEach(function(item) {
+            item.classList.remove("selected");
+
+            if (item.innerHTML == current.displayName)
+                item.classList.add("selected");
+        });
     }
 }
