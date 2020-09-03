@@ -1,23 +1,5 @@
 console.log("Content script started.");
 
-// Listen for url changes
-function setUrlListener(callback) {
-    var currentUrl = location.href;
-
-    var poller = setInterval(function() {
-        if (location.href != currentUrl) {
-            currentUrl = location.href
-            callback(currentUrl);
-        }
-    });
-
-    return poller;
-}
-
-function clearUrlListener(id) {
-    clearInterval(id);
-}
-
 function injectMarkup(url, selector) {
 
     function onload(html) {
@@ -65,23 +47,12 @@ injectScripts([
     "js/init.js"
 ]);
 
-// If location.href.match("*://www.netflix.com/watch/*")
-if (location.href.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
+document.arrive(".AkiraPlayer video", function() {
     chrome.runtime.sendMessage("enableBrowserAction");
-}
+});
 
-// Listen for URL change while not on netflix.com/watch
-setUrlListener(function(url) {
-    console.log(`Href changed to ${url}`);
-
-    // If url.match("*://www.netflix.com/watch/*")
-    // TODO: make function for matching url patterns
-    if (url.match(/.+:\/\/www\.netflix\.com\/watch.+/g)) {
-        chrome.runtime.sendMessage("enableBrowserAction");
-    }
-    else {
-        chrome.runtime.sendMessage("disableBrowserAction");
-    };
+document.leave(".AkiraPlayer video", function() {
+    chrome.runtime.sendMessage("disableBrowserAction");
 });
 
 // Set up communication with background.js
