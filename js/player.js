@@ -1,7 +1,7 @@
 class PlayerInterface {
     constructor() {
         this.player = this.getNetflixPlayer();
-        this.ui = new UserInterface();
+        this.ui = new UserInterface(this.player);
         this.lastSubtitles = null;
     }
     

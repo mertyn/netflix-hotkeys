@@ -1,6 +1,7 @@
 class UserInterface {
-    constructor() {
+    constructor(player) {
         // Variables
+        this.player = player;
         this.tooltipTimer = null;
 
         // Init
@@ -25,6 +26,29 @@ class UserInterface {
                 if (parent.classList.contains("nfhk-popup"))
                     parent.classList.remove("visible");
             });
+        });
+
+        // Init subtitle and audio menus
+        var listElement, tracks;
+        
+        // Audio
+        listElement = document.querySelector("div.nfhk-popup#audio div.nfhk-list>ul");
+        tracks = this.player.getAudioTrackList();
+
+        tracks.forEach(function(track) {
+            var li = document.createElement("li");
+            li.innerText = track.displayName;
+            listElement.appendChild(li);
+        });
+
+        // Subtitles
+        listElement = document.querySelector("div.nfhk-popup#subtitles div.nfhk-list>ul");
+        tracks = this.player.getTextTrackList();
+
+        tracks.forEach(function(track) {
+            var li = document.createElement("li");
+            li.innerText = track.displayName;
+            listElement.appendChild(li);
         });
     }
 
