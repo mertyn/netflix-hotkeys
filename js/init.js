@@ -54,6 +54,6 @@ document.arrive(".AkiraPlayer video", function() {
 });
 
 // Listen for player destroy
-document.releaseEvents(".AkiraPlayer video", function() {
+document.leave(".AkiraPlayer video", function() {
     Mousetrap.reset();
 });
