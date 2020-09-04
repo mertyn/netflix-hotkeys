@@ -30,7 +30,7 @@ document.arrive(".AkiraPlayer video", function() {
     Mousetrap.bind("shift+,", function() { player.speedDown() });
 
     // Audio
-    Mousetrap.bind("v", function() { /* player.switchAudio() */ });
+    Mousetrap.bind("v", function() { player.switchAudio() });
 
     // Subtitles
     Mousetrap.bind("c", function() { player.toggleSubtitles() });

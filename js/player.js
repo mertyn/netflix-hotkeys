@@ -114,6 +114,19 @@ class PlayerInterface {
         this.ui.showTooltip(`${speed}x`);
     }
 
+    switchAudio() {
+        var current = this.player.getAudioTrack();
+        var list = this.player.getAudioTrackList();
+        var number = this.getTrackNumber(current, list);
+
+        var next = this.wrapIncrement(number, list.length);
+        this.player.setAudioTrack(list[next]);
+
+        this.ui.updateList("audiolist", next);
+        this.ui.showPopupTimed("audio", 900);
+        console.log("Audio set to: ", this.player.getAudioTrack());
+    }
+
     toggleSubtitles() {
         var current = this.player.getTextTrack();
         var list = this.player.getTextTrackList();
