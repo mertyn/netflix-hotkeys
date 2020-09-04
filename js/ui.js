@@ -28,33 +28,6 @@ class UserInterface {
                     parent.classList.remove("visible");
             });
         });
-
-        // Init subtitle and audio menus
-        var listElement, tracks;
-        
-        // Audio
-        listElement = document.querySelector("div.nfhk-popup#audio div.nfhk-list>ul");
-        tracks = this.player.getAudioTrackList();
-
-        tracks.forEach(function(track) {
-            var li = document.createElement("li");
-            li.innerText = track.displayName;
-            listElement.appendChild(li);
-        });
-
-        this.updateAudio();
-
-        // Subtitles
-        listElement = document.querySelector("div.nfhk-popup#subtitles div.nfhk-list>ul");
-        tracks = this.player.getTextTrackList();
-
-        tracks.forEach(function(track) {
-            var li = document.createElement("li");
-            li.innerText = track.displayName;
-            listElement.appendChild(li);
-        });
-
-        this.updateSubtitles();
     }
 
     isVisible(id) {
@@ -110,27 +83,25 @@ class UserInterface {
         }, 900);
     }
 
-    updateAudio() {
-        var trackElements = document.querySelectorAll("div.nfhk-popup#audio div.nfhk-list>ul>li");
-        var current = this.player.getAudioTrack();
+    initList(id, list, current) {
+        var ul = document.querySelector(`div.nfhk-list#${id}>ul`);
 
-        trackElements.forEach(function(item) {
-            item.classList.remove("selected");
+        list.forEach(function(item, number) {
+            var li = document.createElement("li");
 
-            if (item.innerHTML == current.displayName)
-                item.classList.add("selected");
+            li.innerText = item.displayName;
+            if (number == current) li.classList.add("selected");
+
+            ul.appendChild(li);
         });
     }
 
-    updateSubtitles() {
-        var trackElements = document.querySelectorAll("div.nfhk-popup#subtitles div.nfhk-list>ul>li");
-        var current = this.player.getTextTrack();
+    updateList(id, current) {
+        var li = document.querySelectorAll(`div.nfhk-list#${id}>ul>li`);
 
-        trackElements.forEach(function(item) {
+        li.forEach(function(item, number) {
             item.classList.remove("selected");
-
-            if (item.innerHTML == current.displayName)
-                item.classList.add("selected");
+            if (number == current) item.classList.add("selected");
         });
     }
 }

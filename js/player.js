@@ -2,6 +2,22 @@ class PlayerInterface {
     constructor() {
         this.player = this.getNetflixPlayer();
         this.ui = new UserInterface(this.player);
+
+        // Init UI
+        var current, list, number;
+
+        // Init Audio UI
+        current = this.player.getAudioTrack();
+        list = this.player.getAudioTrackList();
+        number = this.getTrackNumber(current, list);
+        this.ui.initList("audiolist", list, number);
+
+        // Init Subtitles UI
+        current = this.player.getTextTrack();
+        list = this.player.getTextTrackList();
+        number = this.getTrackNumber(current, list);
+        this.ui.initList("subtitlelist", list, number);
+
         this.lastSubtitles = null;
     }
     
@@ -101,13 +117,13 @@ class PlayerInterface {
     toggleSubtitles() {
         var current = this.player.getTextTrack();
         var list = this.player.getTextTrackList();
-
+        
         // Currently not off
         if (current != this.getTextTrackOff()) {
             this.lastSubtitles = current;
             this.player.setTextTrack(this.getTextTrackOff());
         }
-
+        
         // Currently off
         else {
             // No last subtitles saved
@@ -115,13 +131,17 @@ class PlayerInterface {
                 var on = this.getTextTrackOn(list);
                 this.player.setTextTrack(on);
             }
-
+            
             // Last subtitles saved
             else this.player.setTextTrack(this.lastSubtitles);
         }
-
-        this.ui.updateSubtitles();
+        
+        // Update UI
+        var newCurrent = this.player.getTextTrack();
+        var number = this.getTrackNumber(newCurrent, list);
+        this.ui.updateList("subtitlelist", number);
         this.ui.showPopupTimed("subtitles", 900);
+
         console.log("Toggled subtitles to", this.player.getTextTrack().displayName);
     }
 
@@ -139,8 +159,12 @@ class PlayerInterface {
         };
 
         this.player.setTextTrack(next);
-        this.ui.updateSubtitles();
+
+        // Update UI
+        var newNumber = this.getTrackNumber(next, list);
+        this.ui.updateList("subtitlelist", newNumber);
         this.ui.showPopupTimed("subtitles", 900);
+
         console.log("Subtitles set to", next.displayName);
     }
 
