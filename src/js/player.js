@@ -192,9 +192,9 @@ class PlayerInterface {
 
     showVolume() {
         var volume = this.player.getVolume();
-        console.log(volume);
         volume *= 100;
-        volume = Math.floor(volume);
+        volume = Math.round(volume);
         this.ui.showTooltip(`${volume}%`);
+        console.log("Volume:", volume);
     }
 }
