@@ -1,4 +1,4 @@
-console.log("Content script started.");
+console.log("%cNetflix %cHotkeys started.", "background: black; color: red; font-family: sans-serif; padding: 5px 0 5px 5px", "background: black; color: white; font-family: sans-serif; padding: 5px 5px 5px 0");
 
 function injectMarkup(url, selector) {
 
