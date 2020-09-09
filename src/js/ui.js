@@ -41,13 +41,14 @@ class UserInterface {
         target.classList.add("visible");
     }
 
-    showPopupTimed(id, timeout) {
+    showPopupTimed(id, timeout, callback) {
         this.showPopup(id);
 
         clearTimeout(this.popupTimer);
         this.popupTimer = setTimeout(function() {
             var target = document.querySelector(`div.nfhk-popup#${id}`);
             target.classList.remove("visible");
+            if (callback) callback();
         }, timeout);
     }
 

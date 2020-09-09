@@ -18,6 +18,7 @@ class PlayerInterface {
         number = this.getTrackNumber(current, list);
         this.ui.initList("subtitlelist", list, number);
 
+        this.audioSelection = null;
         this.lastSubtitles = null;
     }
     
@@ -119,12 +120,20 @@ class PlayerInterface {
         var list = this.player.getAudioTrackList();
         var number = this.getTrackNumber(current, list);
 
-        var next = this.wrapIncrement(number, list.length);
-        this.player.setAudioTrack(list[next]);
+        if (this.audioSelection == null) {
+            this.audioSelection = number;
+            this.ui.updateList("audiolist", this.audioSelection);
+        }
+        else {
+            this.audioSelection = this.wrapIncrement(this.audioSelection, list.length);
+            this.ui.updateList("audiolist", this.audioSelection);
+        }
 
-        this.ui.updateList("audiolist", next);
-        this.ui.showPopupTimed("audio", 900);
-        console.log("Audio set to: ", this.player.getAudioTrack());
+        this.ui.showPopupTimed("audio", 900, () => {
+            this.player.setAudioTrack(list[this.audioSelection]);
+            this.audioSelection = null;
+            console.log("Audio set to: ", this.player.getAudioTrack());
+        });
     }
 
     toggleSubtitles() {
