@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #262626;
+    color: white;
+    font-family: sans-serif;
+}
+
+header {
+    background: #141414;
+    padding: 2em 0 2em 0;
+}
+
+header img {
+    display: block;
+    width: 7em;
+    height: auto;
+    margin: 0 auto 2em auto;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    /* background: gray;
+    height: 500px; */
+}
+
+a.link {
+    display: inline-block;
+}
