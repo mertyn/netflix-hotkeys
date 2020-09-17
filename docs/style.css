@@ -98,3 +98,9 @@ footer a {
 footer a:hover {
     color: #aaa;
 }
+
+footer a>img {
+    vertical-align: middle;
+    width: auto;
+    height: 2em;
+}
