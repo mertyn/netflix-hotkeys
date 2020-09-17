@@ -29,10 +29,10 @@
         {
             "js": ["js/arrive.min.js", "js/content.js"],
             "css": ["css/ui.css"],
-            "matches": ["*://*.netflix.com/browse/*", "*://*.netflix.com/title/*", "*://*.netflix.com/watch/*"],
+            "matches": ["*://*.netflix.com/browse*"],
             "run_at": "document_end"
         }
     ],
 
-    "web_accessible_resources": ["html/ui.html", "js/arrive.min.js", "js/mousetrap.min.js", "js/ui.js", "js/player.js", "js/init.js"]
+    "web_accessible_resources": ["html/ui.html", "js/arrive.min.js", "js/mousetrap.min.js", "js/ui.js", "js/player.js", "js/init.js", "js/test.js"]
 }
