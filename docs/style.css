@@ -44,6 +44,7 @@ a.link {
     color: white;
     border-radius: 0.3em;
     text-decoration: none;
+    /* background: #282828; */
     transition: background 0.3s ease-out;
 }
 
@@ -53,7 +54,47 @@ a.link:hover {
 
 a.link img.link__icon {
     vertical-align: middle;
-    width: 2em;
+    width: 3em;
     height: auto;
     margin-right: 1em;
+}
+
+section#about {
+    margin-top: 2em;
+    margin-bottom: 10em;
+}
+
+section#about h2 {
+    padding-left: 0.5em;
+}
+
+section#about img {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: black 0px 5px 25px;
+}
+
+section#about p {
+    display: block;
+    width: 90%;
+    margin: 2em auto;
+}
+
+footer {
+    padding: 5em 0 5em 0;
+    background: #141414;
+    text-align: center;
+}
+
+footer a {
+    margin: 0 1em 0 1em;
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.5s ease-out;
+}
+
+footer a:hover {
+    color: #aaa;
 }
