@@ -24,15 +24,15 @@ header {
 
 header img {
     display: block;
-    width: 7em;
+    width: 5em;
     height: auto;
     margin: 0 auto 2em auto;
 }
 
 header span.logo {
     display: block;
-    width: 7em;
-    height: 7em;
+    width: 6em;
+    height: 6em;
     margin: 0 auto 2em auto;
 
     background: url("images/logo.png");
@@ -54,6 +54,7 @@ section {
 
 section#downloads {
     display: grid;
+    width: 95%;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 0.5em 0.5em;
     padding-top: 1em;
