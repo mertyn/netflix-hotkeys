@@ -7,6 +7,14 @@ body {
     background: #262626;
     color: white;
     font-family: sans-serif;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 header {
@@ -19,6 +27,18 @@ header img {
     width: 7em;
     height: auto;
     margin: 0 auto 2em auto;
+}
+
+header span.logo {
+    display: block;
+    width: 7em;
+    height: 7em;
+    margin: 0 auto 2em auto;
+
+    background: url("images/logo.png");
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
 header h1 {
@@ -52,16 +72,30 @@ a.link:hover {
     background: #303030;
 }
 
-a.link img.link__icon {
+a.link .link__icon {
+    display: inline-block;
     vertical-align: middle;
+
     width: 3em;
-    height: auto;
+    height: 3em;
     margin-right: 1em;
+
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+a.link .link__icon.icon__chrome {
+    background: url("images/chrome.svg");
+}
+
+a.link .link__icon.icon__firefox {
+    background: url("images/firefox.svg");
 }
 
 section#about {
     margin-top: 2em;
-    margin-bottom: 10em;
+    margin-bottom: 5em;
 }
 
 section#about h2 {
@@ -79,11 +113,12 @@ section#about img {
 section#about p {
     display: block;
     width: 90%;
-    margin: 2em auto;
+    margin: 2.5em auto;
+    line-height: 1.5em;
 }
 
 footer {
-    padding: 5em 0 5em 0;
+    padding: 3em 0 3em 0;
     background: #141414;
     text-align: center;
 }
@@ -92,11 +127,11 @@ footer a {
     margin: 0 1em 0 1em;
     color: #ddd;
     text-decoration: none;
-    transition: color 0.5s ease-out;
+    transition: color 0.3s ease-out;
 }
 
 footer a:hover {
-    color: #aaa;
+    color: #999;
 }
 
 footer a>img {

@@ -4,51 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Netflix Hotkeys</title>
+    <title>Netflix Hotkeys (Beta)</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="images/logo.png" /> <!-- Replace with svg -->
-        <h1>Netflix Hotkeys</h1>
+        <span class="logo"></span>
+        <h1>Netflix Hotkeys (Beta)</h1>
     </header>
 
     <!--     
         TODO:
-        - Add icons for links
-        - Add about section
         - Add footer links
         - Add footer link icons?
-        - Add favicon
         - Add manifest?
-        - Disable selection, dragging, ...
      -->
 
     <main>
         <section id="downloads">
-            <a class="link" href="#">
-                <img class="link__icon" src="images/logo.png">
+            <a class="link" href="https://chrome.google.com/webstore/detail/netflix-hotkeys-beta/phboeeebcdbckcpgiponmhleeeblfbbo">
+                <span class="link__icon icon__chrome"></span>
                 <span class="link__text">Download for Chrome</span>
             </a>
 
-            <a class="link" href="#">
-                <img class="link__icon" src="images/logo.png">
+            <a class="link" href="https://addons.mozilla.org/firefox/addon/netflix-hotkeys/">
+                <!-- <img class="link__icon" src="images/firefox.svg"> -->
+                <span class="link__icon icon__firefox"></span>
                 <span class="link__text">Download for Firefox</span>
             </a>
         </section>
 
         <section id="about">
             <h2>Add Hotkeys to Netflix</h2>
-            <a href="images/screenshot.jpg"><img src="images/screenshot.jpg"></a>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui reprehenderit corrupti eligendi veritatis cupiditate, ipsum nihil, totam praesentium explicabo dignissimos cumque enim dolor tenetur, aspernatur possimus rerum dicta amet. Perferendis!</p>
+            <img src="images/screenshot.jpg">
+            <p>
+                Netflix Hotkeys adds various keyboard shortcuts to the Netflix video player to use its functions faster and more easily. The extension also adds some additional features like a volume display, changing video playback speed and quick toggling subtitles on and off.
+            </p>
         </section>
     </main>
 
     <footer>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
+        <a href="https://github.com/Mertyn/netflix-hotkeys">GitHub</a>
+        <a href="#">Contact</a>
     </footer>
 </body>
 </html>
