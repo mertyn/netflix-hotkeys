@@ -29,7 +29,7 @@
         {
             "js": ["js/arrive.min.js", "js/content.js"],
             "css": ["css/ui.css"],
-            "matches": ["*://*.netflix.com/browse*"],
+            "matches": ["*://*.netflix.com/browse*", "*://*.netflix.com/title*", "*://*.netflix.com/watch*"],
             "run_at": "document_end"
         }
     ],
