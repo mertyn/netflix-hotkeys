@@ -1,11 +1,9 @@
-const initHere = true;
-
-var poller = setInterval(function() {
-    if (document.arrive) {
-        clearInterval(poller);
-        onReady();
-    }
-});
+// var poller = setInterval(function() {
+//     if (document.arrive) {
+//         clearInterval(poller);
+//         onReady();
+//     }
+// });
 
 function onReady() {
     // Listen for player initialization
@@ -77,3 +75,5 @@ function onReady() {
         });
     });
 }
+
+onReady();
