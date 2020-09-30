@@ -28,10 +28,6 @@ function injectScripts(urls) {
     for (var i in urls) {
         var script = document.createElement("script");
         script.src = chrome.extension.getURL(urls[i]);
-        var url = urls[i];
-        script.onload = function() {
-            console.log(`${url} loaded`);
-        }
         div.appendChild(script);
     }
 
